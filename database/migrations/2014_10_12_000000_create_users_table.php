@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->boolean("admin")->default(0);
+            $table->boolean("is_admin")->default(0);
             $table->boolean("active")->default(1);
-            $table->binary("image");
+            $table->binary("image")->nullable();
             $table->softDeletes('deleted_at', 0);	
 
 

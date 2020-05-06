@@ -21,7 +21,8 @@ class CreateBooksTable extends Migration
             $table->binary('cover');
             $table->integer('price');
             $table->integer('available_copies');
-            $table->integer('category_id')->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->softDeletes('deleted_at', 0);	
 
 
