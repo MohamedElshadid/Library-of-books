@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('chart-js','chartController@index');
+Route::get('relatedBooks','BookController@related_books');
