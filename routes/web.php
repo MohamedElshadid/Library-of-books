@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 Route::get('chart-js','chartController@index');
 Route::get('relatedBooks','BookController@related_books');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
