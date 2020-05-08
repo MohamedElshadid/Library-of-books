@@ -9,7 +9,7 @@
                 @if(Auth::user()->is_admin==1)
                     <h2>Hello Admin </h2>
                 @else
-                    <h2>Hello user </h2>
+                    <h2>Hello User</h2>
                 @endif
                 <div class="card-body">
                     @if (session('status'))
