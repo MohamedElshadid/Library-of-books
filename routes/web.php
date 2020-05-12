@@ -19,3 +19,7 @@ Route::get('relatedBooks','BookController@related_books');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('users/user', 'UserController@edit')->name('users.edit');
+Route::patch('users/{user}/update', 'UserController@update')->name('users.update');
+
