@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
+
 class UserController extends Controller
 {
     public function __construct()
@@ -22,15 +23,20 @@ class UserController extends Controller
     public function update(User $user)
     { 
         $this->validate(request(), [
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'image' => ['required','mimes:jpg,jpeg'],
+            'username' => ['string', 'max:255'],
+            'email' => ['string', 'email', 'max:255'],
+            // 'image' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
 
+        // $imageName = time() . '.' . $user['image']->getClientOriginalExtension();
+
+        // $user['image']->move(
+        // base_path() . '/public/upload/', $imageName);
+
         $user->username = request('username');
         $user->email = request('email');
-        $user->image = request('image');
+        // $user->image = $imageName;
         $user->password = bcrypt(request('password'));
 
         $user->save();
