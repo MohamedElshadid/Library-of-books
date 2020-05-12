@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $imageName = time() . '.' . $data['image']->getClientOriginalExtension();
+        $imageName = $data['image']->getClientOriginalExtension();
 
         $data['image']->move(
         base_path() . '/public/upload/', $imageName);
