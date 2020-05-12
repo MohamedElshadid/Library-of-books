@@ -190,7 +190,11 @@ return [
     | take place, and can be used to mitigate CSRF attacks. By default, we
     | do not enable this as other CSRF protection services are in place.
     |
+<<<<<<< HEAD
     | Supported: "lax", "strict"
+=======
+    | Supported: "lax", "strict", "none"
+>>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
     |
     */
 

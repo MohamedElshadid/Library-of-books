@@ -1,9 +1,13 @@
 php:
   preset: laravel
+<<<<<<< HEAD
   enabled:
     - alpha_ordered_imports
   disabled:
     - length_ordered_imports
+=======
+  disabled:
+>>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
     - unused_use
   finder:
     not-name:
