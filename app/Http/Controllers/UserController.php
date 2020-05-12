@@ -22,10 +22,10 @@ class UserController extends Controller
     public function update(User $user)
     { 
         $this->validate(request(), [
-            'username' => 'required',
-            'email' => 'required|email|unique:users',
-            'image' => 'required',
-            'password' => 'required|min:6|confirmed'
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'image' => ['required','mimes:jpg,jpeg'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
 
         $user->username = request('username');

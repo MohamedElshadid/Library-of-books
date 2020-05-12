@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('users/user', 'UserController@edit')->name('users.edit');
 Route::patch('users/{user}/update', 'UserController@update')->name('users.update');
 
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
