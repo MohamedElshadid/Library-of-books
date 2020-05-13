@@ -15,28 +15,9 @@
                 <div class="card-header">Dashboard</div>
                 @if(Auth::user()->is_admin==1)
                     <h2>Hello Admin </h2>
-                @else
-                    <h2>Hello {{Auth::user()->username}}</h2>
-                @endif
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        You are logged in!
-                    </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- list & add of categories -->
+
+
+                    <!-- list & add of categories -->
 
 <div class="card" style="width: 20em;">
             <div class="card-header">
@@ -78,7 +59,7 @@
                                 {!! Form::open(['route' => ['categories.destroy',$category],'method'=>'delete']) !!}
                                 {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
                                 {!! Form::close() !!}
-                              <!--  <a href="#" class="btn btn-danger">delete</a> -->
+                           
                             </li>
                             @empty
                                 <p>No categories yet !!!! </p>
@@ -88,6 +69,38 @@
                      </div>
                        
                    
+
+
+
+
+
+
+
+
+
+                   
+                @else
+                    <h2>Hello {{Auth::user()->username}}</h2>
+                @endif
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        You are logged in!
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                      @endsection
 

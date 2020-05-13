@@ -30,7 +30,8 @@ Route::get('category/{id}','BookController@index');
 Route::post('store','BookController@store');
 //delete book from category
  Route::get('category/bookDestroy/{id}','BookController@destroy');
- 
+ ###################################################
+
 Route::get('users/user', 'UserController@edit')->name('users.edit');
 Route::patch('users/{user}/update', 'UserController@update')->name('users.update');
 

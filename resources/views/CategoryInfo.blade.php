@@ -1,3 +1,4 @@
+
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
  <table class="table">
         <thead class="thead-dark">
@@ -43,16 +44,6 @@
         </tbody>
 </table> 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 <div class="card" style="width: 40em;">
     <div class="card-header">
             add book to category
@@ -95,5 +86,7 @@
 <a href="{{ url('home') }}" class="btn btn-primary">back to home</a>
 
 
+
+                   
              <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

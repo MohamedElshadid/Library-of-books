@@ -7,6 +7,8 @@ use App\Category;
 use Auth;
 class CategoryController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
