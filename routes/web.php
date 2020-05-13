@@ -26,6 +26,10 @@ Route::resource('categories', 'CategoryController');
 //list books in specific category 
 Route::get('category/{id}','BookController@index');
 //store book info in category 
+
 Route::post('store','BookController@store');
 //delete book from category
  Route::get('category/bookDestroy/{id}','BookController@destroy');
+ 
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

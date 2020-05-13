@@ -30,6 +30,7 @@ class BookController extends Controller
      }
      public function create(Request $request)
     {
+        
         //create book form 
         
         return view('home');
@@ -43,8 +44,19 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => ['required', 'unique:books', 'max:255'],
+            'author' => ['required'],
+            'available_copies' => ['required','numeric','min:0'],
+            'cover' => ['required'],
+            'price' => ['required','numeric','min:0'],
+
+        ]);
+
+      
         //store data of book to category
         $book=new Book ;
+     
         $book->title=$request->title;
         $book->author=$request->author;
         $book->available_copies=$request->available_copies;
@@ -59,7 +71,7 @@ class BookController extends Controller
         $book->category_id=$request->category_id;
         $book->save();
     //redirect
-          return redirect('/category/'.$book->category_id);
+          return redirect()->back();
     
    
     }

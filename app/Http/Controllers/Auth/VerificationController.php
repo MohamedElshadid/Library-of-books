@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
-=======
 use App\Providers\RouteServiceProvider;
->>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
 class VerificationController extends Controller
@@ -29,11 +26,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-<<<<<<< HEAD
-    protected $redirectTo = '/home';
-=======
     protected $redirectTo = RouteServiceProvider::HOME;
->>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
 
     /**
      * Create a new controller instance.

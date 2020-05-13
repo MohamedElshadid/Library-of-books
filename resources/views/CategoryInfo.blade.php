@@ -43,6 +43,16 @@
         </tbody>
 </table> 
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="card" style="width: 40em;">
     <div class="card-header">
             add book to category
@@ -50,22 +60,23 @@
             <div class="collapse" id="collapseformAddBook">
                 <div class="form-group card card-body"  >
                     {!! Form::open(['action' => 'BookController@store', 'files' => true]) !!}
+                   
                         {!! Form::label('title', 'Book Title') !!}
-                     &emsp; &emsp;&emsp;  {!! Form::text('title',"add book title",['class'=>'form-check-input ']) !!}
+                     &emsp; &emsp;&emsp;  {!! Form::text('title',"",['required' => 'required','class'=>'form-check-input  ']) !!}
 <br/>
                         {!! Form::label('author', 'Book Author') !!}
-                        &emsp;&emsp;&emsp; {!! Form::text('author',"add book  author ",['class'=>'form-check-input ']) !!}
+                        &emsp;&emsp;&emsp; {!! Form::text('author',"",['required' => 'required','class'=>'form-check-input ']) !!}
                         <br/>
                         {!! Form::label('price', 'Book Price') !!}
-                        &emsp;&emsp;&emsp;  <?php echo  Form::number('price','0.0',['class'=>'form-check-input ']) ; ?>
+                        &emsp;&emsp;&emsp;  <?php echo  Form::number('price','',['min' => '0.0','required' => 'required','class'=>'form-check-input ']) ; ?>
                         <br/>
                         {!! Form::label('available_copies', 'Book Available Copies') !!}
-                        &emsp;&emsp;&emsp;  <?php echo  Form::number('available_copies','0.0',['class'=>'form-check-input ']); ?>
+                        &emsp;&emsp;&emsp;  <?php echo  Form::number('available_copies','',['min' => '0.0','required' => 'required','class'=>'form-check-input ']); ?>
                         <br/>
                         {!! Form::label('cover', 'Book Cover') !!}
-                        &emsp;&emsp;&emsp;  {!! Form::file('cover')!!}
+                        &emsp;&emsp;&emsp;  {!! Form::file('cover',['required' => 'required']) !!}
                      <?php  
-                     echo  $url_segment = \Request::segment(2); 
+                       $url_segment = \Request::segment(2); 
                       
                      ?>
                         {{ Form::hidden('category_id',$url_segment)}}
@@ -79,7 +90,10 @@
                 </div>
             </div> 
     </div>
-</div>        
+</div>   
+    
 <a href="{{ url('home') }}" class="btn btn-primary">back to home</a>
+
+
              <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

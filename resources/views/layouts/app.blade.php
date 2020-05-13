@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Font Icon -->
 </head>
 <body>
     <div id="app">
@@ -78,5 +79,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
