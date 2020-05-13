@@ -44,3 +44,6 @@ Route::get('users/{users}/removeAdmin', 'UserController@removeAdmin')->name('use
 Route::get('/users', 'UserController@showUser')->name('users.showUser');
 Route::get('users/{users}/makeAdmin', 'UserController@makeAdmin')->name('users.makeAdmin');
 
+Route::get('users/{users}/deactivate', 'UserController@deactivate')->name('users.deactivate');
+Route::get('users/{users}/activate', 'UserController@activate')->name('users.activate');
+

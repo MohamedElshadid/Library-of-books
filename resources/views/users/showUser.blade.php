@@ -26,8 +26,19 @@
                         <td> {{$users->username}} </td>
                         <td> {{$users->email}} </td>
                         <td> <img src="upload/{{$users->image}}" style="width:60px; height:60px" /> </td>
-                        <td> <a href="{{route('users.makeAdmin', $users)}}" class="btn btn-danger">Make Admin</a></td>
+                        <td> <a href="{{route('users.makeAdmin', $users)}}" class="btn btn-primary">Make Admin</a>
                         
+                        @if($users->active == 0)
+                        <a href="{{route('users.activate', $users)}}" class="btn btn-success">activate</a>
+
+                        @elseif($users->active == 1)
+                        <a href="{{route('users.deactivate', $users)}}" class="btn btn-danger">deactivate</a>
+
+                        @endif
+                    </td>
+
+                
+
                     </tr>
                     @empty
                    <tr>

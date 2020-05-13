@@ -80,4 +80,24 @@ class UserController extends Controller
         return redirect()->route('admins.showAdmin');
 
     }
+    public function deactivate(User $users){
+        $id = $users->id;
+        $user=User::find($id);
+        if($user){
+            $user->active = 0 ;
+            $user->save();
+        }
+        return redirect()->route('users.showUser');
+    }
+    public function activate(User $users){
+        $id = $users->id;
+        $user=User::find($id);
+        if($user){
+            $user->active = 1 ;
+            $user->save();
+        }
+        return redirect()->route('users.showUser');
+    }
+
+
 }
