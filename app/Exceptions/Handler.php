@@ -31,8 +31,11 @@ class Handler extends ExceptionHandler
      *
      * @param  \Exception  $exception
      * @return void
+<<<<<<< HEAD
+=======
      *
      * @throws \Exception
+>>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
      */
     public function report(Exception $exception)
     {
@@ -44,9 +47,13 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
+<<<<<<< HEAD
+     * @return \Illuminate\Http\Response
+=======
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws \Exception
+>>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
      */
     public function render($request, Exception $exception)
     {

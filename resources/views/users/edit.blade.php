@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container col-4 offset-4 mt-3">
-        <div>
-            <p class="h3 alert alert-info">Update Profile</p>
-        </div>
+<div class="overlay"></div>
 
-        <div>
-            <form method="post" action="{{route('users.update', $user)}}" enctype="multipart/form-data">
+    <div class="users">
+
+        <div style="position: relative;z-index: 8;">
+            <p class="h3 alert alert-info text-center" style="width:30%;margin: 20px auto;">Update Profile</p>
+
+            <form method="post" action="{{route('users.update', $user)}}" enctype="multipart/form-data" style="width:30%;margin: 0 auto;">
                 {{ csrf_field() }}
                 {{ method_field('patch') }}
 
@@ -16,7 +17,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <input class="form-control mb-2" type="email" name="email"  value="{{ $user->email }}" />
+                <input class="form-control mb-2" type="email" name="email"  value="{{ $user->email }}" readonly />
                 @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

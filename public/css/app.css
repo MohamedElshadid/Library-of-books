@@ -105,17 +105,25 @@ p {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 820px;
+  height: 839px;
   background-position: center;
   position: relative;
   width: 100%;
+  padding: 12px;
 }
 .overlay{
   background-color: rgba(0, 0, 0, 0.5);
-  height: 835px;
+  height: 839px;
   width: 100%;
   z-index: 4;
   position:absolute;
+}
+.navbar-brand{
+  color: white !important;
+}
+.nav-link{
+  color: white !important;
+  font-size: 18px;
 }
 abbr[title],
 abbr[data-original-title] {

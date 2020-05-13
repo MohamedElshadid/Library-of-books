@@ -22,13 +22,13 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
+            <div class="container" style="font-weight:bold">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Library') }}
                 </a>
 
-                <a class="navbar-brand" href="{{ route('admins.showAdmin', Auth::id()) }}">
+                  <a class="navbar-brand" href="{{ route('admins.showAdmin', Auth::id()) }}">
                     {{ __('All Admins') }}
                 </a>
 
@@ -69,7 +69,7 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="top: 36px;">
                                     <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">
                                         {{ __('Edit Profile') }}
                                     </a>
@@ -95,7 +95,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container col-4 offset-4 mt-3">
-        <div>
-            <h2 class="h3 alert alert-primary"> All Admins</h2>
-        </div>
+<div class="overlay"></div>
+    <div class="users">
 
-        <div>
+        <div style="z-index: 222;position: relative;">
            
-            <table class="table table-bordered table-info">
+        <table class="table table-bordered table-success" style="width:50%;margin: 10px auto;font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;">
                 <thead>
+                <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> All Admins</h2>
                   <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
@@ -25,7 +24,7 @@
                         <td> {{$users->email}} </td>
                         <td> <img src="upload/{{$users->image}}" style="width:60px; height:60px" /> </td>
 
-                        <td> <a href="{{route('users.removeAdmin', $users)}}" class="btn btn-danger">Remove Admin</a></td>
+                        <td> <a href="{{route('users.removeAdmin', $users)}}" class="btn btn-success">Remove Admin</a></td>
                     </tr>
                   
                     @endforeach
