@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container col-4 offset-4 mt-3">
+<div class="overlay"></div>
+    <div class="users">
        
-        <div>
-            <h2 class="h3 alert alert-primary"> All Users</h2>
-        </div>
 
-        <div>
+        <div style="z-index: 222;position: relative;">
           
 
-            <table class="table table-bordered table-info">
+            <table class="table table-bordered table-info" style="width:50%;margin: 0 auto;font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;">
+                
                 <thead>
+                <h2 class="alert alert-primary text-center" style="width:50%;margin:20px auto"> All Users</h2>
                   <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>

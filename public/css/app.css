@@ -99,7 +99,24 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
+.users{
+  background: url('../upload/blur-bookcase-books-bookshelf-298660.jpg') no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 820px;
+  background-position: center;
+  position: relative;
+  width: 100%;
+}
+.overlay{
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 835px;
+  width: 100%;
+  z-index: 4;
+  position:absolute;
+}
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
