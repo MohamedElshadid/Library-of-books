@@ -36,7 +36,7 @@
                     {{ __('All Users') }}
                 </a>
 
-                <a class="navbar-brand" href="{{ route('users.edit', Auth::id()) }}">
+                <a class="navbar-brand" href="{{ route('users.editAdmin', Auth::id()) }}">
                     {{ __('Edit Profile') }}
                 </a>
                 
@@ -70,7 +70,7 @@
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="top: 36px;">
-                                    <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">
+                                    <a class="dropdown-item" href="{{ route('users.editAdmin', Auth::id()) }}">
                                         {{ __('Edit Profile') }}
                                     </a>
                                     

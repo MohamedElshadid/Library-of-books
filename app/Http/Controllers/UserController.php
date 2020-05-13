@@ -14,13 +14,13 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function edit(User $user)
+    public function editAdmin(User $user)
     {   
         $user = Auth::user();
-        return view('users.edit', compact('user'));
+        return view('users.editAdmin', compact('user'));
     }
 
-    public function update(User $user)
+    public function updateAdmin(User $user)
     { 
         $this->validate(request(), [
             'username' => ['string', 'max:255'],
