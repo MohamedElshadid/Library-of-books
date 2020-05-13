@@ -37,4 +37,41 @@ class UserController extends Controller
 
         return redirect()->route('home')->with('success', 'Profile has been updated successfully..');;
     }
+
+
+    public function showUser(){
+        
+        $users = User::whereIn('is_admin', [0])->get();
+        
+        return view('users.showUser',['users'=>$users]);
+        
+    }
+    public function showAdmin(){
+        
+        $users = User::whereIn('is_admin', [1])->where('id', '!=', Auth::id())->get();
+        
+        return view('users.showAdmin',['users'=>$users]);
+        
+    }
+
+    public function makeAdmin(User $users){
+        $id = $users->id;
+        $user=User::find($id);
+        if($user){
+            $user->is_admin = 1 ;
+            $user->save();
+        }
+        return redirect()->route('admins.showAdmin');
+
+    }
+    public function removeAdmin(User $users){
+        $id = $users->id;
+        $user=User::find($id);
+        if($user){
+            $user->is_admin = 0 ;
+            $user->save();
+        }
+        return redirect()->route('admins.showAdmin');
+
+    }
 }

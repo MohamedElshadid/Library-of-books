@@ -25,3 +25,10 @@ Route::patch('users/{user}/update', 'UserController@update')->name('users.update
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/admins', 'UserController@showAdmin')->name('admins.showAdmin');
+Route::get('users/{users}/removeAdmin', 'UserController@removeAdmin')->name('users.removeAdmin');
+
+Route::get('/users', 'UserController@showUser')->name('users.showUser');
+Route::get('users/{users}/makeAdmin', 'UserController@makeAdmin')->name('users.makeAdmin');
+
