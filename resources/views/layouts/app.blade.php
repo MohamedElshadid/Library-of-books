@@ -28,7 +28,7 @@
                     {{ config('app.name', 'Library') }}
                 </a>
 
-                <a class="navbar-brand" href="{{ route('admins.showAdmin', Auth::id()) }}">
+                  <a class="navbar-brand" href="{{ route('admins.showAdmin', Auth::id()) }}">
                     {{ __('All Admins') }}
                 </a>
 

@@ -16,7 +16,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <input class="form-control mb-2" type="email" name="email"  value="{{ $user->email }}" />
+                <input class="form-control mb-2" type="email" name="email"  value="{{ $user->email }}" readonly />
                 @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

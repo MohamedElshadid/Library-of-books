@@ -4,13 +4,13 @@
     <div class="container col-4 offset-4 mt-3">
        
         <div>
-            <h2 class="h3 alert alert-primary"> All Users</h2>
+            <h2 class="h3 alert alert-success"> All Users</h2>
         </div>
 
         <div>
           
 
-            <table class="table table-bordered table-info">
+            <table class="table table-bordered table-success">
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -21,12 +21,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @forelse($users as $users)
+                    @foreach($users as $users)
                     <tr>
                         <td> {{$users->username}} </td>
                         <td> {{$users->email}} </td>
                         <td> <img src="upload/{{$users->image}}" style="width:60px; height:60px" /> </td>
-                        <td> <a href="{{route('users.makeAdmin', $users)}}" class="btn btn-primary">Make Admin</a>
+                        <td> <a href="{{route('users.makeAdmin', $users)}}" class="btn btn-success">Make Admin</a>
                         
                         @if($users->active == 0)
                         <a href="{{route('users.activate', $users)}}" class="btn btn-success">activate</a>
@@ -36,15 +36,12 @@
 
                         @endif
                     </td>
-
-                
-
                     </tr>
-                    @empty
+                    {{-- @empty
                    <tr>
                     <h2 class="h3 alert alert-primary"> There is no users !!!</h2>
-                </tr>
-                    @endforelse
+                </tr> --}}
+                @endforeach
                             
                 </tbody>
               </table>

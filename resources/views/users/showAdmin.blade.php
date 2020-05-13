@@ -3,12 +3,12 @@
 @section('content')
     <div class="container col-4 offset-4 mt-3">
         <div>
-            <h2 class="h3 alert alert-primary"> All Admins</h2>
+            <h2 class="h3 alert alert-success"> All Admins</h2>
         </div>
 
         <div>
            
-            <table class="table table-bordered table-info">
+            <table class="table table-bordered table-success">
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -25,7 +25,7 @@
                         <td> {{$users->email}} </td>
                         <td> <img src="upload/{{$users->image}}" style="width:60px; height:60px" /> </td>
 
-                        <td> <a href="{{route('users.removeAdmin', $users)}}" class="btn btn-danger">Remove Admin</a></td>
+                        <td> <a href="{{route('users.removeAdmin', $users)}}" class="btn btn-success">Remove Admin</a></td>
                     </tr>
                   
                     @endforeach
