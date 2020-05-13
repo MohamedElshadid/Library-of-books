@@ -7,7 +7,7 @@
         </div>
 
         <div>
-            <form method="post" action="{{route('users.update', $user)}}">
+            <form method="post" action="{{route('users.update', $user)}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{ method_field('patch') }}
 
@@ -21,17 +21,19 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <input id="image" type="file" value="{{ $user->image }}" class="form-control mb-2" name="image">
+                {{-- <img src="upload/{{ Auth::user()->image }}" style="width:70px;height:70px;border-radius:50%">
+
+                <input id="image" type="file" value="{{ Auth::user()->image }}" class="form-control mb-2" name="image">
                 @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+                @enderror --}}
 
-                <input class="form-control mb-2" type="password" name="password" placeholder="Password"/>
+                <input class="form-control mb-2" type="password" name="password" placeholder="New Password"/>
                 @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <input class="form-control mb-2" type="password" name="password_confirmation" placeholder="Confirm Password" />
+                <input class="form-control mb-2" type="password" name="password_confirmation" placeholder="Confirm password" />
                 
                 <input type="submit" value="Update"
                     class="mt-1 form-control  btn btn-primary btn-lg">
