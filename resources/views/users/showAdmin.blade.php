@@ -5,7 +5,7 @@
     <div class="users">
 
         <div style="z-index: 222;position: relative;">
-           
+        @if($users->count()>0)
         <table class="table table-bordered table-success" style="width:50%;margin: 10px auto;font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;">
                 <thead>
                 <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> All Admins</h2>
@@ -31,6 +31,10 @@
                             
                 </tbody>
               </table>
+              @else
+              <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> There is no admins !!</h2>
+
+              @endif
 
         </div>
     </div>
