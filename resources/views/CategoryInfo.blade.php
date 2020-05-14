@@ -55,18 +55,18 @@
                 <!-- <div class="form-group card card-body"  > -->
                     {!! Form::open(['action' => 'BookController@store', 'files' => true]) !!}
                    
-                        {!! Form::label('title', 'Book Title') !!}
-                     &emsp; &emsp;&emsp;  {!! Form::text('title',"",['required' => 'required','class'=>'form-check-input  ']) !!}
-<br/>
-                        {!! Form::label('author', 'Book Author') !!}
-                        &emsp;&emsp;&emsp; {!! Form::text('author',"",['required' => 'required','class'=>'form-check-input ']) !!}
-                        <br/>
-                        {!! Form::label('price', 'Book Price') !!}
-                        &emsp;&emsp;&emsp;  <?php echo  Form::number('price','',['min' => '0.0','required' => 'required','class'=>'form-check-input ']) ; ?>
-                        <br/>
-                        {!! Form::label('available_copies', 'Book Available Copies') !!}
+                        {!! Form::label('title', ' Title') !!}
+                     &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; {!! Form::text('title',"",['required' => 'required','class'=>'form-check-input  ']) !!}
+<br/><br/>
+                        {!! Form::label('author', ' Author') !!}
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; {!! Form::text('author',"",['required' => 'required','class'=>'form-check-input ']) !!}
+                        <br/><br/>
+                        {!! Form::label('price', ' Price') !!}
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <?php echo  Form::number('price','',['min' => '0.0','required' => 'required','class'=>'form-check-input ']) ; ?>
+                        <br/><br/>
+                        {!! Form::label('available_copies', ' Available Copies') !!}
                         &emsp;&emsp;&emsp;  <?php echo  Form::number('available_copies','',['min' => '0.0','required' => 'required','class'=>'form-check-input ']); ?>
-                        <br/>
+                        <br/><br/>
                         {!! Form::label('cover', 'Book Cover') !!}
                         &emsp;&emsp;&emsp;  {!! Form::file('cover',['required' => 'required']) !!}
                      <?php  
