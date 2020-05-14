@@ -13,9 +13,12 @@
             @endif
 <table>
     <tr>
-    @forelse ($books as $book)
+    <div class="row">
+
+       
+    @foreach ($books as $book)
     <td>
-    <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important width:150px;;height:350px; margin-left:10px">
+    <div class="card  " style="background-color:rgba(255, 255, 255, 0.7)  !important width:150px;;height:350px; margin-left:10px">
         <div class="card-header">                       
            <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:150px;height:100px;border:2px solid black ;" />
            </div> 
@@ -29,7 +32,7 @@
                 <form action="" method="post">
                     @csrf
                     @method('delete')
-                        <a href="bookDestroy/{{$book->id}}" class="btn btn-danger">Delete</a>
+                        <a href="{{route('homeDestroy', $book->id)}}" class="btn btn-danger">Delete</a>
                     </form>
             
             </div>
@@ -40,9 +43,10 @@
 </td>
   
 
-    @empty
-    <p>No books yet !!!! </p>
-@endforelse
+    {{-- @empty
+    <p>No books yet !!!! </p> --}}
+@endforeach
+</div>
 </tr>
 </table>         
 </div>

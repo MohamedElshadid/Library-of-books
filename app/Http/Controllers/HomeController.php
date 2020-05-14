@@ -26,4 +26,12 @@ class HomeController extends Controller
         $books=\App\Book::all();
         return view('home',['books'=>$books]);
     }
+    public function destroy($id)
+    {
+        $book =\App\Book::find($id);
+        $book->delete();
+        return redirect()->route('home');
+
+     }
+
 }

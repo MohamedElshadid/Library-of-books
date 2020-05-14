@@ -21,6 +21,7 @@ Route::get('chart-js','chartController@index');
 Route::get('relatedBooks','BookController@related_books');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{id}', 'HomeController@destroy')->name('homeDestroy');
 Route::get('/CategoriesPage','CategoryController@index')->name('CategoriesPage');
 //routes used in category & books  part (maryam)
 
