@@ -90,7 +90,7 @@
                                 </div>
                             </li>
                             <li>
-                                <img src="upload/{{ Auth::user()->image }}" style="width:70px;height:70px;border-radius:50%">
+                                <img src="<?php echo asset('upload/'.Auth::user()->image)?>" style="width:70px;height:70px;border-radius:50%">
                             </li>
                         @endguest
                     </ul>

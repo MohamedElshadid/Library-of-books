@@ -1,6 +1,9 @@
+@extends('layouts.app')
 
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
- <table class="table">
+@section('content')
+<div class="overlay"></div>
+    <div class="users">
+    <table class="table table-bordered table-info" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6">
         <thead class="thead-dark">
             <tr>
             <th scope="col">#</th>
@@ -44,12 +47,12 @@
         </tbody>
 </table> 
 
-<div class="card" style="width: 40em;">
+<div class="card" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6;width:30%">
     <div class="card-header">
             add book to category
             <a  class="btn btn-success" data-toggle="collapse" href="#collapseformAddBook"role="button" aria-expanded="false" aria-controls="collapseformAddBook">Add Book</a>
             <div class="collapse" id="collapseformAddBook">
-                <div class="form-group card card-body"  >
+                <!-- <div class="form-group card card-body"  > -->
                     {!! Form::open(['action' => 'BookController@store', 'files' => true]) !!}
                    
                         {!! Form::label('title', 'Book Title') !!}
@@ -78,15 +81,10 @@
                     {!! Form::close() !!}
 
                   
-                </div>
+                <!-- </div> -->
             </div> 
     </div>
 </div>   
+</div>
     
-<a href="{{ url('home') }}" class="btn btn-primary">back to home</a>
-
-
-
-                   
-             <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+@endsection

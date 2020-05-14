@@ -16,26 +16,24 @@
 
                     <!-- list & add of categories -->
 
-                {{-- <div class="card" style="width: 20em;background-color:rgba(255, 255, 255, 0.7) !important"> --}}
-                    <div class="card-header">
-                            categories 
-                            <a  class="btn btn-success" data-toggle="collapse" href="#collapseExample"role="button" aria-expanded="false" aria-controls="collapseExample">add</a>
-                            <div class="collapse" id="collapseExample">
-                                <div class="form-group card card-body"  >
-                                    {!! Form::open(['route' => 'categories.store' ]) !!}
-                                    &emsp;&emsp;
-                                        {!! Form::text('categories',"add category",['class'=>'form-check-input ','placeholder'=>'Enter category name']) !!}
-                                            <br/><br/>
-                                    {!! Form::submit('Submit',['class'=>'btn btn-success ']) !!}
-                                    {!! Form::close() !!}
-                                </div>
-                            </div> 
+                <!-- {{-- <div class="card" style="width: 20em;background-color:rgba(255, 255, 255, 0.7) !important"> --}} -->
+                    <div class="card-header" style="color:white">
+                        <strong>Add Categories </strong>
+                        <a  class="btn btn-success" data-toggle="collapse" href="#collapseExample"role="button" aria-expanded="false" aria-controls="collapseExample">add</a>
+                        <div class="collapse" id="collapseExample">
+                            <div class="form-group card card-body"  >
+                                {!! Form::open(['route' => 'categories.store' ]) !!}
+                                &emsp;&emsp;
+                                    {!! Form::text('categories',"add category",['class'=>'form-check-input ','placeholder'=>'Enter category name']) !!}
+                                        <br/><br/>
+                                {!! Form::submit('Submit',['class'=>'btn btn-success ']) !!}
+                                {!! Form::close() !!}
+                            </div>
+                        </div> 
                     </div>
-                       
-                    <br/><br/><br/>
-                    {{-- <ul class="list-group list-group-flush"> --}}
+                    <!-- {{-- <ul class="list-group list-group-flush"> --}} -->
                     
-                        <table class="table table-striped table-light">
+                    <table class="table table-bordered table-info" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;">
                             <thead>
                               <tr>
                                 <th scope="col">Name</th>
@@ -43,51 +41,44 @@
                                 
                               </tr>
                             </thead>
-                          
-                        @forelse ($categories as $category)
-                        {{-- <li class="list-group-item"> --}}
-
                             <tbody>
-                                  <tr>
+                                @foreach ($categories as $category)
+                        <!-- {{-- <li class="list-group-item"> --}} -->
+                                    <tr>
                                 
-                                    <td>
-                                 
-                               
-                               
-                            <a href="{{ url('category/'.$category->id.'/')}}">{{$category ->name}}</a> </td>
+                                        <td>
+                                            <a href="{{ url('category/'.$category->id.'/')}}" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline">{{$category ->name}}</a> 
+                                        </td>
                             <!-- <a href="#" class="btn btn-info">update</a> -->
-<td>
-                            <a  class="btn btn-success" data-toggle="collapse" href="#collapseupdateform"role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
-                            <div class="collapse" id="collapseupdateform">
-                            
-                                {!! Form::model($category,['route' =>['categories.update',$category],'method'=>'put']) !!}
-                                    <div class="form-group" >
-                                        
-                                    {!! Form::text('name',NULL,['class'=>'form-check-input']) !!}
-                                        <br/><br/><br/>   
-                                    </div>
-                                <br/>
-                                {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
-                                {!! Form::close() !!}
-                            </div>
-                            {!! Form::open(['route' => ['categories.destroy',$category],'method'=>'delete']) !!}
-                            {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
-                            {!! Form::close() !!}
-                        </tr>
-                        {{-- </li> --}}
-                        @empty
-                            <p>No categories yet !!!! </p>
-                        @endforelse
+                                        <td>
+                                            <a  class="btn btn-success" data-toggle="collapse" href="#collapseupdateform"role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
+                                            <div class="collapse" id="collapseupdateform">
+                                                {!! Form::model($category,['route' =>['categories.update',$category],'method'=>'put','class'=>'form']) !!}
+                                                    <div class="form-group" >   
+                                                        {!! Form::text('name',NULL,['class'=>'form-check-input']) !!}
+                                                    </div>
+                                                {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
+                                                {!! Form::close() !!}
+                                            </div>
+                                                {!! Form::open(['route' => ['categories.destroy',$category],'method'=>'delete','class'=>'form']) !!}
+                                                {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
+                                           
+                                        </td>
+                                    </tr>
+                        <!-- {{-- </li> --}} -->
+                              
+                                @endforeach
                    
-                </tbody>
-            </table>
-                    {{-- </ul> --}}
+                            </tbody>
+                        </table>
+                    <!-- {{-- </ul> --}} -->
                        
-                {{-- </div> --}}
+                <!-- {{-- </div> --}} -->
                        
                    
-{{--               
-            </div> --}}
+<!-- {{--               
+            </div> --}} -->
         </div>
     </div>
 
