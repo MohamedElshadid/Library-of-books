@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -9,14 +11,10 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-Route::get('/', function () {
+*/Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/userShow', function () {
-    return view('userShow');
-});
+
 Route::get('chart-js','chartController@index');
 Route::get('relatedBooks','BookController@related_books');
 Auth::routes();
@@ -53,3 +51,7 @@ Route::get('users/{users}/deactivate', 'UserController@deactivate')->name('users
 Route::get('users/{users}/activate', 'UserController@activate')->name('users.activate');
 
 // URL::asset('path/to/asset');
+
+
+Route::get('/userDashbord', 'HomeController@userIndex')->name('userHome');
+

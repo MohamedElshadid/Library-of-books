@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,13 @@ class HomeController extends Controller
         $book->delete();
         return redirect()->route('home');
 
-     }
+    }
+    public function userIndex(Request $request)
+    {
+        $books=\App\Book::all();
+        $catagory = \App\Category::all();
+
+        return view("userShow", ['books'=>$books, "catagory" => $catagory]);
+    }
 
 }
