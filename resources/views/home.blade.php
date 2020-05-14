@@ -3,7 +3,7 @@
 @section('content')
 <div class="overlay"></div>
 <div class="users">
-    <div class="row justify-content-center" style="width:50%;margin: 0 auto;">
+    <div class="row justify-content-center" style="width:50%;">
         <div class="col-md-8" style="z-index:718;">
             {{--------- Flash Session -------}}
             @if(Session::has('success'))
@@ -11,36 +11,43 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
+<table>
+    <tr>
+    @forelse ($books as $book)
+    <td>
+    <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important width:150px;;height:350px; margin-left:10px">
+        <div class="card-header">                       
+           <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:150px;height:100px;border:2px solid black ;" />
+           </div> 
+            <a href="#"><h3> {{$book->title}}</h3> </a>
+            <h5>Author: {{$book->author}}</h5>
+            <h5>Price: {{$book->price}} $</h5> 
+            <h6>{{$book->available_copies}} Availble</h6>
+            </div>
+              
+            <div class="card-body">
+                <form action="" method="post">
+                    @csrf
+                    @method('delete')
+                        <a href="bookDestroy/{{$book->id}}" class="btn btn-danger">Delete</a>
+                    </form>
             
-            <div class="card" style="background-color:rgba(255, 255, 255, 0.7) !important">
-                <div class="card-header">Dashboard</div>
-                @if(Auth::user()->is_admin==1)
-                    <h2>Hello Admin </h2>
-
-             
-                   
-                @else
-                    <h2>Hello {{Auth::user()->username}}</h2>
-                @endif
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        You are logged in!
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
 
+    </div>
+    
+</td>
+  
+
+    @empty
+    <p>No books yet !!!! </p>
+@endforelse
+</tr>
+</table>         
+</div>
+</div>
+   
 
 @endsection
 
