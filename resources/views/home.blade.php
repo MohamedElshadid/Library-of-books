@@ -13,16 +13,17 @@
             @endif
 
             @if($books->count()>0)
-            <div class="row">
+            <div class="row" style="margin:0">
                 @foreach ($books as $book)
                     <div class="col-md-3 mt-2">
-                        <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important width:150px;;height:350px;width:70%">
+                        <div class="card" style="background-color:rgba(255, 255, 255, 0.7)!important">
                             <div class="card-header">                       
-                            <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:100px;border:2px solid black ;" />
-                                <a href="#"><h3> {{$book->title}}</h3> </a>
-                                <h5>Author: {{$book->author}}</h5>
-                                <h5>Price: {{$book->price}} $</h5> 
-                                <h6>{{$book->available_copies}} Availble</h6>
+                                <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
+                                    <a href="#"><h3> {{$book->title}}</h3> </a>
+                                    <h5>Author: {{$book->author}}</h5>
+                                    <h5>Price: {{$book->price}} $</h5> 
+                                    <h6>{{$book->available_copies}} Availble</h6>
+                                </div>
                             </div>
                                 
                             <div class="card-body">
@@ -33,7 +34,7 @@
                                     </form>
                             </div>
 
-                        </div>
+                            </div>
                     </div>
                
                 @endforeach
