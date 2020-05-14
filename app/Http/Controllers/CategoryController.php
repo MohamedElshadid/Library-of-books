@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories=\App\Category::all();
+        $categories=Category::all();
         return view('CategoriesPage',['categories'=>$categories]);
     }
 
