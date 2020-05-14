@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
             <div class="container" style="font-weight:bold">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Library') }}
+                    {{ __( 'Mktabty') }}
                 </a>
                 <a class="navbar-brand" href="{{ route('CategoriesPage') }}">
                     {{ __('Categories') }}
@@ -39,10 +39,10 @@
                     {{ __('All Users') }}
                 </a>
 
-                <a class="navbar-brand" href="{{ route('users.editAdmin', Auth::id()) }}">
+                {{-- <a class="navbar-brand" href="{{ route('users.editAdmin', Auth::id()) }}">
                     {{ __('Edit Profile') }}
                 </a>
-                
+                 --}}
                
               
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
