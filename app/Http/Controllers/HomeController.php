@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories=\App\Category::all();
-        return view('home',['categories'=>$categories]);
+        // $categories=\App\Category::all();
+        return view('home');
     }
 }

@@ -21,8 +21,9 @@ Route::get('chart-js','chartController@index');
 Route::get('relatedBooks','BookController@related_books');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/CategoriesPage','CategoryController@index')->name('CategoriesPage');
 //routes used in category & books  part (maryam)
+
 
 //category routes
 Route::resource('categories', 'CategoryController');
@@ -34,9 +35,9 @@ Route::post('store','BookController@store');
 //delete book from category
  Route::get('category/bookDestroy/{id}','BookController@destroy');
  ###################################################
-
-Route::get('users/user', 'UserController@edit')->name('users.edit');
-Route::patch('users/{user}/update', 'UserController@update')->name('users.update');
+// Route::resource('users', 'UserController');
+Route::get('users/{user}/edit', 'UserController@editAdmin')->name('users.editAdmin');
+Route::patch('users/{user}/update', 'UserController@updateAdmin')->name('users.updateAdmin');
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
@@ -50,3 +51,4 @@ Route::get('users/{users}/makeAdmin', 'UserController@makeAdmin')->name('users.m
 Route::get('users/{users}/deactivate', 'UserController@deactivate')->name('users.deactivate');
 Route::get('users/{users}/activate', 'UserController@activate')->name('users.activate');
 
+// URL::asset('path/to/asset');
