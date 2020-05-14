@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/userShow', function () {
+    return view('userShow');
+});
 Route::get('chart-js','chartController@index');
 Route::get('relatedBooks','BookController@related_books');
 Auth::routes();
