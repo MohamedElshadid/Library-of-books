@@ -11,8 +11,10 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
+
+            @if($books->count()>0)
             <div class="row">
-                @forelse ($books as $book)
+                @foreach ($books as $book)
                     <div class="col-md-3 mt-2">
                         <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important width:150px;;height:350px;width:70%">
                             <div class="card-header">                       
@@ -33,9 +35,12 @@
 
                         </div>
                     </div>
-                @empty
-                    <p>No books yet !!!! </p>
-                @endforelse
+               
+                @endforeach
+                @else
+                <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> There is no Books!!</h2>
+  
+                @endif
             </div>
         </div>
     </div>

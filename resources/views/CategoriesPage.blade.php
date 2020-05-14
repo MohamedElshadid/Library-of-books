@@ -33,6 +33,7 @@
                     </div>
                     <!-- {{-- <ul class="list-group list-group-flush"> --}} -->
                     
+                    @if($categories->count()>0)
                     <table class="table table-bordered table-info" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;">
                             <thead>
                               <tr>
@@ -43,13 +44,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)
-                        <!-- {{-- <li class="list-group-item"> --}} -->
+                      
                                     <tr>
                                 
                                         <td>
                                             <a href="{{ url('category/'.$category->id.'/')}}" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline">{{$category ->name}}</a> 
                                         </td>
-                            <!-- <a href="#" class="btn btn-info">update</a> -->
                                         <td>
                                             <a  class="btn btn-success" data-toggle="collapse" href="#collapseupdateform"role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
                                             <div class="collapse" id="collapseupdateform">
@@ -66,19 +66,17 @@
                                            
                                         </td>
                                     </tr>
-                        <!-- {{-- </li> --}} -->
+                     
                               
                                 @endforeach
                    
                             </tbody>
                         </table>
-                    <!-- {{-- </ul> --}} -->
-                       
-                <!-- {{-- </div> --}} -->
-                       
-                   
-<!-- {{--               
-            </div> --}} -->
+                 
+                        @else
+                        <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> There is no Categories!!</h2>
+          
+                        @endif
         </div>
     </div>
 

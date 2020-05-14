@@ -3,6 +3,7 @@
 @section('content')
 <div class="overlay"></div>
     <div class="users">
+        @if(count($books)>0)
     <table class="table table-bordered table-info" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6">
         <thead class="thead-dark">
             <tr>
@@ -16,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-        @forelse ($books as $book)
+        @foreach ($books as $book)
             <tr>
             <td>{{$book->id}}</td>
             <td>{{$book->title}}</td>
@@ -35,19 +36,18 @@
             @method('delete')
                  <a href="bookDestroy/{{$book->id}}" class="btn btn-danger">Delete</a>
             </form>
-      
             </td> 
-            
-            </tr>
-         
-            @empty
-             <p>No books yet !!!! </p>
-         @endforelse
+            </tr>    
+         @endforeach
          
         </tbody>
 </table> 
+@else
+<h2 class="alert alert-primary text-center" style="width:50%;margin:10px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> There is no Books!!</h2>
 
-<div class="card" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6;width:30%">
+@endif
+
+<div class="card" style="font-weight:bold;margin:10px auto;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6;width:30%">
     <div class="card-header">
             add book to category
             <a  class="btn btn-success" data-toggle="collapse" href="#collapseformAddBook"role="button" aria-expanded="false" aria-controls="collapseformAddBook">Add Book</a>
