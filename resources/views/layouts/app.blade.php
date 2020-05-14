@@ -27,6 +27,9 @@
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Library') }}
                 </a>
+                <a class="navbar-brand" href="{{ route('CategoriesPage') }}">
+                    {{ __('Categories') }}
+                </a>
 
                   <a class="navbar-brand" href="{{ route('admins.showAdmin', Auth::id()) }}">
                     {{ __('All Admins') }}

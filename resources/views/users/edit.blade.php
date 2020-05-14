@@ -22,8 +22,8 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                {{-- <img src="upload/{{ Auth::user()->image }}" style="width:70px;height:70px;border-radius:50%">
-
+                {{-- <img src="upload/{{ Auth::user()->image }}" style="width:70px;height:70px;border-radius:50%"> --}}
+{{-- 
                 <input id="image" type="file" value="{{ Auth::user()->image }}" class="form-control mb-2" name="image">
                 @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>

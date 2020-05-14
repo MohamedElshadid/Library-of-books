@@ -17,6 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categories=\App\Category::all();
+        return view('CategoriesPage',['categories'=>$categories]);
     }
 
     /**
@@ -27,7 +29,7 @@ class CategoryController extends Controller
     public function create()
     {
         //create category form 
-        return view('home');
+        return view('CategoriesPage');
      }
 
     /**
@@ -43,7 +45,7 @@ class CategoryController extends Controller
         $category->name =$request->categories;
         $category->save();
     //redirect
-  return redirect()->route('home');
+  return redirect()->route('CategoriesPage');
     }
 
     /**
@@ -82,7 +84,7 @@ class CategoryController extends Controller
         $category=Category::find($id);
         $category->name=$request->name;
         $category->save();
-        return redirect()->route('home');
+        return redirect()->route('CategoriesPage');
     }
 
     /**
@@ -96,6 +98,6 @@ class CategoryController extends Controller
         //delete category from db 
         $category =Category::find($id);
         $category->delete();
-        return redirect ()->route('home');
+        return redirect ()->route('CategoriesPage');
     }
 }
