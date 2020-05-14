@@ -14,8 +14,6 @@ class Controller extends BaseController
     {
 
         $this->middleware('auth');
-        $this->middleware('admin');
-        $this->middleware('user');
 
     }
     
