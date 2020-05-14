@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
@@ -9,12 +8,6 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
-=======
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
-         colors="true">
->>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
@@ -29,17 +22,13 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
-<<<<<<< HEAD
     <extensions>
         <extension class="Tests\Bootstrap"/>
     </extensions>
-=======
->>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
-<<<<<<< HEAD
         <server name="MAIL_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
@@ -48,12 +37,7 @@
         <server name="APP_PACKAGES_CACHE" value="bootstrap/cache/packages.phpunit.php"/>
         <server name="APP_ROUTES_CACHE" value="bootstrap/cache/routes.phpunit.php"/>
         <server name="APP_EVENTS_CACHE" value="bootstrap/cache/events.phpunit.php"/>
-=======
         <server name="DB_CONNECTION" value="sqlite"/>
         <server name="DB_DATABASE" value=":memory:"/>
-        <server name="MAIL_DRIVER" value="array"/>
-        <server name="QUEUE_CONNECTION" value="sync"/>
-        <server name="SESSION_DRIVER" value="array"/>
->>>>>>> a100e3120426c5f22edee69d6c4949dac1872bb3
     </php>
 </phpunit>
