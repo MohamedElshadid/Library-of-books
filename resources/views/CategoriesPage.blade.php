@@ -16,7 +16,7 @@
 
                     <!-- list & add of categories -->
 
-                <div class="card" style="width: 20em;background-color:rgba(255, 255, 255, 0.7) !important">
+                {{-- <div class="card" style="width: 20em;background-color:rgba(255, 255, 255, 0.7) !important"> --}}
                     <div class="card-header">
                             categories 
                             <a  class="btn btn-success" data-toggle="collapse" href="#collapseExample"role="button" aria-expanded="false" aria-controls="collapseExample">add</a>
@@ -33,13 +33,30 @@
                     </div>
                        
                     <br/><br/><br/>
-                    <ul class="list-group list-group-flush">
+                    {{-- <ul class="list-group list-group-flush"> --}}
                     
+                        <table class="table table-striped table-light">
+                            <thead>
+                              <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Action</th>
+                                
+                              </tr>
+                            </thead>
+                          
                         @forelse ($categories as $category)
-                        <li class="list-group-item">
-                            <a href="{{ url('category/'.$category->id.'/')}}">{{$category ->name}}</a>
-                            <!-- <a href="#" class="btn btn-info">update</a> -->
+                        {{-- <li class="list-group-item"> --}}
 
+                            <tbody>
+                                  <tr>
+                                
+                                    <td>
+                                 
+                               
+                               
+                            <a href="{{ url('category/'.$category->id.'/')}}">{{$category ->name}}</a> </td>
+                            <!-- <a href="#" class="btn btn-info">update</a> -->
+<td>
                             <a  class="btn btn-success" data-toggle="collapse" href="#collapseupdateform"role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
                             <div class="collapse" id="collapseupdateform">
                             
@@ -56,14 +73,17 @@
                             {!! Form::open(['route' => ['categories.destroy',$category],'method'=>'delete']) !!}
                             {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
                             {!! Form::close() !!}
-                        
-                        </li>
+                        </tr>
+                        {{-- </li> --}}
                         @empty
                             <p>No categories yet !!!! </p>
                         @endforelse
-                    </ul>
+                   
+                </tbody>
+            </table>
+                    {{-- </ul> --}}
                        
-                </div>
+                {{-- </div> --}}
                        
                    
 {{--               
