@@ -47,6 +47,15 @@
 
 @endif
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif 
 <div class="card" style="font-weight:bold;margin:10px auto;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6;width:30%">
     <div class="card-header">
             add book to category
@@ -86,5 +95,6 @@
     </div>
 </div>   
 </div>
-    
+  
+ 
 @endsection
