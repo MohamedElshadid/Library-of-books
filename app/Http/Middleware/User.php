@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class User
 {
     /**
@@ -15,9 +15,10 @@ class User
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->check() && auth()->user()->is_admin == 0) {
+        if(Auth::check() && Auth::user()->is_admin == 0) {
             return $next($request);
         }
-        return redirect('/');
+        
+        return redirect('/login');
     }
 }
