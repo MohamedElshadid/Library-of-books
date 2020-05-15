@@ -45,7 +45,7 @@
                                 </div>
                                 <h5> {{$book->title}}</h5>
                                 <h5>Author: {{$book->author}}</h5>
-                                <h5>Category: {{$book->category->name}}</h5> 
+                                {{-- <h5>Category: {{$book->category->name}}</h5>  --}}
                                 <h5>Price: {{$book->price}} $</h5> 
                                 <h6>{{$book->available_copies}} Availble</h6>
                             </div>
@@ -67,6 +67,10 @@
                 <h1>No Books</h1>
             @endforelse
         </div>
+
+        <div class="row" style="margin:30px; margin-left:40%">
+            {{ $books->links() }} 
+            </div>
     </div>
 </div>
 </div>

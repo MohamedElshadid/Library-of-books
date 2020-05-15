@@ -24,7 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $books=\App\Book::all();
+        // $books=\App\Book::all();
+        $books=\App\Book::simplePaginate(4);
+       
+
         return view('home',['books'=>$books]);
     }
     public function destroy($id)
@@ -36,7 +39,7 @@ class HomeController extends Controller
     }
     public function userIndex(Request $request)
     {
-        $books=\App\Book::all();
+        $books=\App\Book::simplePaginate(4);
         $catagory = \App\Category::all();
 
         return view("userShow", ['books'=>$books, "catagory" => $catagory]);

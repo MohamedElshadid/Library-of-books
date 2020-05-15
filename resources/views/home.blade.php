@@ -43,6 +43,10 @@
   
                 @endif
             </div>
+
+            <div class="row" style="margin:60px; margin-left:45%">
+            {{ $books->fragment('foo')->links() }} 
+            </div>
         </div>
     </div>
 </div>
