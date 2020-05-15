@@ -34,7 +34,7 @@
                             </div>
                             </div>
 
-                        </div>
+                            </div>
                     </div>
                
                 @endforeach
@@ -42,6 +42,10 @@
                 <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> There is no Books!!</h2>
   
                 @endif
+            </div>
+
+            <div class="row" style="margin:60px; margin-left:45%">
+            {{ $books->fragment('foo')->links() }} 
             </div>
         </div>
     </div>

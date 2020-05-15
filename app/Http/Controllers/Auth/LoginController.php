@@ -51,9 +51,24 @@ class LoginController extends Controller
         ]);
   
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
+        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])) )
         {
-            return redirect()->route('home');
+            // $admin = User::where('id', Auth::user()->id)->where('is_admin',1)->get();
+            // if(!$admin){
+            //     return redirect()->route('login');
+            // }
+            // else{
+                return redirect()->route('home');
+            // }
+
+            //  dd($admin);
+        //     if($admin){ 
+    
+        //     return redirect()->route('home');
+        //    }
+        //    else{
+        //     return redirect()->route('login');
+        //    }
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');
