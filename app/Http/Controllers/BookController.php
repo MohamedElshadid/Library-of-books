@@ -56,7 +56,7 @@ class BookController extends Controller
       
         //store data of book to category
         $book=new Book ;
-     
+        $book->id=$request->id;
         $book->title=$request->title;
         $book->author=$request->author;
         $book->available_copies=$request->available_copies;
@@ -91,7 +91,5 @@ class BookController extends Controller
         return redirect ('/category/'.$book->category_id);
     }
 
-    
-    
-
+  
 }

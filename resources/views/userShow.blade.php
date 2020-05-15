@@ -47,14 +47,24 @@
                                 <h5>Author: {{$book->author}}</h5>
                                 {{-- <h5>Category: {{$book->category->name}}</h5>  --}}
                                 <h5>Price: {{$book->price}} $</h5> 
+                                @if($book->available_copies !=0)
                                 <h6>{{$book->available_copies}} Availble</h6>
+                                @else
+                                <h6>Not Availble</h6>
+                                @endif
+                                
+                                
                             </div>
                                 
                             <div class="card-body">
                                 <form action="" method="post">
                                     @csrf
-                                    <a href="" class="btn btn-info">View</a>
-                                    <a href="" class="btn btn-info">Lease</a>
+                                    <a href="{{route('books.view', $book)}}" class="btn btn-info">View</a>
+                                    @if($book->available_copies !=0)
+                                    <a href="{{route('books.lease', $book)}}" class="btn btn-info">Lease</a>
+                                    @else
+                                    <a href="" class="btn btn-danger">Lease</a>
+                                    @endif
                                 </form>
                             </div>
                             <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;bottom: 4%;" type="submit"><i class="fa fa-heart" style="font-size: 20px; color: red;" aria-hidden="true"></i>

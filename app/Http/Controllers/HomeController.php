@@ -37,12 +37,12 @@ class HomeController extends Controller
         return redirect()->route('home');
 
     }
-    public function userIndex(Request $request)
-    {
-        $books=\App\Book::simplePaginate(4);
-        $catagory = \App\Category::all();
+    // public function userIndex(Request $request)
+    // {
+    //     $books=\App\Book::simplePaginate(4);
+    //     $catagory = \App\Category::all();
 
-        return view("userShow", ['books'=>$books, "catagory" => $catagory]);
-    }
+    //     return view("userShow", ['books'=>$books, "catagory" => $catagory]);
+    // }
 
 }

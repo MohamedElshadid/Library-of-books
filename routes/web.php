@@ -42,6 +42,7 @@ Route::middleware('admin')->group(function (){
     Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
     Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
     
+    ################################
     Route::get('/admins', 'UserController@showAdmin')->name('admins.showAdmin');
     Route::get('users/{users}/removeAdmin', 'UserController@removeAdmin')->name('users.removeAdmin');
     
@@ -50,13 +51,19 @@ Route::middleware('admin')->group(function (){
     
     Route::get('users/{users}/deactivate', 'UserController@deactivate')->name('users.deactivate');
     Route::get('users/{users}/activate', 'UserController@activate')->name('users.activate');
+    #############################################
+
+
+
 });
 
 
 // URL::asset('path/to/asset');
 
 Route::middleware('user')->group(function (){ 
-    Route::get('/userDashbord', 'HomeController@userIndex')->name('userHome');
+    Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
+    Route::get('lease/{id}', 'DetailsController@lease')->name('books.lease');
+    Route::get('view/{id}', 'DetailsController@view')->name('books.view');
 
 });
 
