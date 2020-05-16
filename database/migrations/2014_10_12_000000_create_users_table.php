@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->boolean("is_admin")->default(0)->nullable();
             $table->boolean("active")->default(1)->nullable();
-            $table->binary("image")->nullable();
+            $table->string("image")->nullable();
             $table->string('provider_id')->nullable();
             $table->softDeletes('deleted_at', 0);	
 
