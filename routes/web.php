@@ -39,8 +39,7 @@ Route::middleware('admin')->group(function (){
     Route::get('users/{user}/editAdmin', 'UserController@editAdmin')->name('users.editAdmin');
     Route::patch('users/{user}/updateAdmin', 'UserController@updateAdmin')->name('users.updateAdmin');
     
-    Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
-    Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
+    
 
     Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
     Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
@@ -67,7 +66,9 @@ Route::middleware('user')->group(function (){
     Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
     Route::get('lease/{id}', 'DetailsController@lease')->name('books.lease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
-   
+    
+    Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
+    Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
 
 });
 
