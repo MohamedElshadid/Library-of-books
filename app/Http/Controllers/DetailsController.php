@@ -126,7 +126,7 @@ class DetailsController extends Controller
         $bklease->expire_date=Carbon::now()->addDays($request['days']);
         $bklease->save();
         $book = Book::find($obj['id']);
-        if($book->available_copies > 0 ){
+        if($book->available_copies > 0 && $request['days']>0){
             $book->decrement('available_copies');
         }
         return redirect()->route('userHome');
