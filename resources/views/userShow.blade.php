@@ -57,6 +57,10 @@
                             </div>
                                 
                             <div class="card-body">
+                                {{-- <form action="related/$book->id" method="POST">
+                                    <input hidden name ="related" value='$book'/>
+                                </form>
+                                 --}}
                                 <form action="#" >
                                     @csrf
                                     <a href="{{route('books.view', $book)}}" class="btn btn-info">View</a>
@@ -71,10 +75,7 @@
                                     <a href="" class="btn btn-danger">Lease</a>
                                     @endif
                                 </form>
-                                <!-- <form action="{{ route('related',$book->id) }}" method="get">
-                                    <input type="text" name="book_id" value="{{$book->id}}" hidden>
-                                    <input type="submit">
-                                </form> -->
+                             
                             </div>
                             <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;bottom: 4%;" type="submit"><i class="fa fa-heart" style="font-size: 20px; color: red;" aria-hidden="true"></i>
                             </button>
