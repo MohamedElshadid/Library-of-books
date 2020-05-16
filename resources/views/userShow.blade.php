@@ -4,6 +4,13 @@
 <div class="overlay"></div>
 <div class="users">
 <nav style="position:relative;z-index:8">
+    {{--------- Flash Session -------}}
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+    
     <form action="" method="GET" style="display:inline-block;width:30%">
         <a class="text-light" style="font-size:20px"> Order By : </a>
         {{-- <label >order by : </label> --}}
@@ -17,6 +24,7 @@
         <input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
         <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="search">
     </form>
+    
 </nav>
 <div class="d-flex py-5 " style="position:relative;z-index:8">
     <div class="list-group" style="width:18%">
@@ -48,9 +56,9 @@
                                 <h5>Category: {{$book->category->name}}</h5>
                                 <h5>Price: {{$book->price}} $</h5> 
                                 @if($book->available_copies !=0)
-                                <h6>{{$book->available_copies}} Availble</h6>
+                                <h6>{{$book->available_copies}} Available</h6>
                                 @else
-                                <h6>Not Availble</h6>
+                                <h6>Not Available</h6>
                                 @endif
                                 
                                 
@@ -83,7 +91,7 @@
                             </div>
                     </div>
             @empty
-                <h1>No Books</h1>
+                <h1 >No Books</h1>
             @endforelse
         </div>
 
