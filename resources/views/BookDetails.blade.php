@@ -48,42 +48,20 @@
         <div class="book" style="z-index:11">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    @foreach($relbooks as $rel)
                     <div class="swiper-slide">
                         <div class="imgBx">
-                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
+                        <img src="<?php echo asset('storage/'.$rel->cover)?>" >
                         </div>
                         <div class="details">
-                            <h3>Title<br><span>{{$books->title}}</span></h3>
-                            <h3>Auther<br><span>{{$books->author}}</span></h3>
+                            <h3>Title<br><span>{{$rel->title}}</span></h3>
+                            <h3>Auther<br><span>{{$rel->author}}</span></h3>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="imgBx">
-                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
-                        </div>
-                        <div class="details">
-                            <h3>Title<br><span>{{$books->title}}</span></h3>
-                            <h3>Auther<br><span>{{$books->author}}</span></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="imgBx">
-                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
-                        </div>
-                        <div class="details">
-                            <h3>Title<br><span>{{$books->title}}</span></h3>
-                            <h3>Auther<br><span>{{$books->author}}</span></h3>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="imgBx">
-                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
-                        </div>
-                        <div class="details">
-                            <h3>Title<br><span>{{$books->title}}</span></h3>
-                            <h3>Auther<br><span>{{$books->author}}</span></h3>
-                        </div>
-                    </div>
+                    @endforeach
+                    
+                  
+                  
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
