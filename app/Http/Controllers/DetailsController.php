@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Book;
 use App\Category;
+use App\Lease;
+use Carbon\Carbon;
+use Auth;
+
 class DetailsController extends Controller
 {
     /**
@@ -100,15 +104,23 @@ class DetailsController extends Controller
     }
 
 
-    public function lease($id)
-    {
-        // dd($id);
-      
-        $book = Book::find($id);
+    public function savelease(Request $request){
+        $data = $request->all();
+        $data = $request->input('book');
+        $obj = json_decode($data,true);
+        $bklease= new Lease;
+        $bklease->book_id =$obj['id'];
+        $bklease->user_id = Auth::user()->id;
+        $bklease->price =$obj['price'];
+        $bklease->date = Carbon::now();
+        $bklease->expire_date=Carbon::now()->addDays($request['days']);
+        $bklease->save();
+        $book = Book::find($obj['id']);
         if($book->available_copies > 0){
             $book->decrement('available_copies');
         }
         return redirect()->route('userHome');
+
     }
 
     public function view($id){
