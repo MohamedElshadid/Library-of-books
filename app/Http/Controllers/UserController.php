@@ -24,13 +24,12 @@ class UserController extends Controller
     }
 
     public function updateAdmin(Request $request, $id)
-    { 
-        $user = User::find($id);
-
+    {
         $validatedData = $request->validate([
             'username' => ['string', 'max:255'],
             // 'image' => ['required'],
-            'password' => ['required', 'string', 'min:8']
+            'old_password' => ['required' , 'string', 'min:8'],
+            'new_password' => ['string', 'min:8']
         ]);
 
         // if($request->hasFile('image')) {
@@ -41,11 +40,18 @@ class UserController extends Controller
         //     $request->file('image')->move(
         //         base_path() . '/public/upload/', $image_name);
         // }
-
-        $user->password = Hash::make($request['password']);
-        User::findOrFail($id)->update($request->all());
-        $user->save();
-        return redirect()->route('home')->with('success', 'Profile has been updated successfully..');;
+        $user = User::find(Auth::id());
+        $newPassword = $request['old_password'];
+        $oldPassword = User::find(Auth::id())->password;
+        if (Hash::check($newPassword, $oldPassword)) {
+            $user->password = Hash::make($request['new_password']);
+            User::findOrFail($id)->update($request->all());
+            $user->save();
+            return redirect()->route('home')->with('success', 'Profile has been updated successfully..');
+        }
+        else{
+            return redirect()->route('users.editAdmin',$user)->with('danger', 'Please Enter the correct old password');
+        }
     }
     // =========================== User ==========================
     public function editUser(User $user)
@@ -56,12 +62,11 @@ class UserController extends Controller
 
     public function updateUser(Request $request, $id)
     { 
-        $user = User::find($id);
-
         $validatedData = $request->validate([
             'username' => ['string', 'max:255'],
             // 'image' => ['required'],
-            'password' => ['required', 'string', 'min:8']
+            'old_password' => ['required' , 'string', 'min:8'],
+            'new_password' => ['string', 'min:8']
         ]);
 
         // if($request->hasFile('image')) {
@@ -72,11 +77,18 @@ class UserController extends Controller
         //     $request->file('image')->move(
         //         base_path() . '/public/upload/', $image_name);
         // }
-
-        $user->password = Hash::make($request['password']);
-        User::findOrFail($id)->update($request->all());
-        $user->save();
-        return redirect()->route('home')->with('success', 'Profile has been updated successfully..');;
+        $user = User::find(Auth::id());
+        $newPassword = $request['old_password'];
+        $oldPassword = User::find(Auth::id())->password;
+        if (Hash::check($newPassword, $oldPassword)) {
+            $user->password = Hash::make($request['new_password']);
+            User::findOrFail($id)->update($request->all());
+            $user->save();
+            return redirect()->route('userHome')->with('success', 'Profile has been updated successfully..');
+        }
+        else{
+            return redirect()->route('users.editUser',$user)->with('danger', 'Please Enter the correct old password');
+        }        
     }
     // ===============================================================
     public function showUser(){

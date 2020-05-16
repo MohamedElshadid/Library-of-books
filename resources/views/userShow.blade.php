@@ -4,6 +4,13 @@
 <div class="overlay"></div>
 <div class="users">
 <nav style="position:relative;z-index:8">
+    {{--------- Flash Session -------}}
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+    
     <form action="" method="GET" style="display:inline-block;width:30%">
         <a class="text-light" style="font-size:20px"> Order By : </a>
         {{-- <label >order by : </label> --}}

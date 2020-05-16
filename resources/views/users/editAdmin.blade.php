@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 <div class="overlay"></div>
     <div class="users">
@@ -33,8 +32,19 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror --}}
 
-                        {!! Form::password('password',['class'=>'form-control mb-2' , 'placeholder'=>'New Password']) !!}
-                        @error('password')
+                        {!! Form::password('old_password',['class'=>'form-control mb-2' , 'placeholder'=>'Old Password']) !!}
+                        @error('old_password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        {{--------- Flash Session -------}}
+                        @if(Session::has('danger'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('danger') }}
+                            </div>
+                        @endif
+
+                        {!! Form::password('new_password',['class'=>'form-control mb-2' , 'placeholder'=>'New Password (or confirm as old password)']) !!}
+                        @error('new_password')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
 
