@@ -1,3 +1,4 @@
+
 @extends('layouts.userNavbar')
 @section('content')
 
@@ -57,21 +58,43 @@
                                     <a href="" class="btn btn-info">Lease</a>
                                 </form>
                             </div>
-                            <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;bottom: 4%;" type="submit"><i class="fa fa-heart" style="font-size: 20px; color: red;" aria-hidden="true"></i>
-                            </button>
-                            </div>
+                            <!-- heart shape button  -->
+                            <!-- <div class="heart-shape"> -->
+                            <form action="{{ action('FavouriteController@store') }}" method="post">
+                            {{csrf_field()}}
+                                <input type="submit" value="add to favourites" class="btn btn-success"> 
+                               
+                                <input type="hidden" id="bookID" name="bookID" value="{{$book->id}}">
+                             </form>
+                             
+                             <form action="" method="get">
+                            {{csrf_field()}}
+                            
+                            @method('delete')
+                            <a href="removeFav/{{$book->id}}" class="btn btn-danger">Delete</a>                              
+                                <input type="hidden" id="bookID" name="bookID" value="{{$book->id}}" >
+                             </form>
+                                
 
+                            <!-- </div> -->
+                         
+                            </div>
+                           
                             </div>
                     </div>
             @empty
                 <h1>No Books</h1>
             @endforelse
         </div>
+       
+       
 
         <div class="row" style="margin:30px; margin-left:40%">
             {{ $books->links() }} 
             </div>
+            
     </div>
 </div>
 </div>
+
 @endsection

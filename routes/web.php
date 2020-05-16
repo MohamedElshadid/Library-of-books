@@ -52,7 +52,8 @@ Route::middleware('admin')->group(function (){
     Route::get('users/{users}/activate', 'UserController@activate')->name('users.activate');
 });
 
-
+Route::post('addFav','FavouriteController@store');
+Route::get('removeFav/{id}','FavouriteController@destroy');
 // URL::asset('path/to/asset');
 
 Route::middleware('user')->group(function (){ 
