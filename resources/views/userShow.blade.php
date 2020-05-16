@@ -13,7 +13,7 @@
         <input type="hidden" name="sortvalue" value="">
     </form>
 
-    <form class="form-inline" action="" method="GET" style="display:inline-block;width:20%;position: absolute;left: 77%;">
+    <form class="form-inline" action="{{route('search')}}" method="GET" style="display:inline-block;width:20%;position: absolute;left: 77%;">
         <input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
         <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="search">
     </form>
@@ -45,7 +45,7 @@
                                 </div>
                                 <h5> {{$book->title}}</h5>
                                 <h5>Author: {{$book->author}}</h5>
-                                {{-- <h5>Category: {{$book->category->name}}</h5>  --}}
+                                <h5>Category: {{$book->category->name}}</h5>
                                 <h5>Price: {{$book->price}} $</h5> 
                                 @if($book->available_copies !=0)
                                 <h6>{{$book->available_copies}} Availble</h6>
@@ -90,7 +90,7 @@
 
         <div class="row" style="margin:30px; margin-left:40%">
             {{ $books->links() }} 
-            </div>
+        </div>
     </div>
 </div>
 </div>
