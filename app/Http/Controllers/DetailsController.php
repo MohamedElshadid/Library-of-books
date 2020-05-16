@@ -87,7 +87,7 @@ class DetailsController extends Controller
     {
         $userSearch = $request->search;
         $catagory = \App\Category::all();
-        $books = Book::where("title", "like", "%$userSearch%")->orWhere("author", "like", "%$userSearch%")->simplePaginate(4);
+        $books = Book::where("title", "like", "$userSearch")->orWhere("author", "like", "$userSearch")->simplePaginate(4);
         // dd($books);
         return view("userShow", ["books" => $books, "catagory" => $catagory]);
 
