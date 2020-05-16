@@ -16,6 +16,8 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 Route::middleware('admin')->group(function (){
     Route::get('chart-js','chartController@index');
     Route::get('relatedBooks','BookController@related_books');
@@ -39,11 +41,6 @@ Route::middleware('admin')->group(function (){
     Route::get('users/{user}/editAdmin', 'UserController@editAdmin')->name('users.editAdmin');
     Route::patch('users/{user}/updateAdmin', 'UserController@updateAdmin')->name('users.updateAdmin');
     
-    
-
-    Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
-    Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
-    
     ################################
     Route::get('/admins', 'UserController@showAdmin')->name('admins.showAdmin');
     Route::get('users/{users}/removeAdmin', 'UserController@removeAdmin')->name('users.removeAdmin');
@@ -64,9 +61,10 @@ Route::middleware('admin')->group(function (){
 
 Route::middleware('user')->group(function (){ 
     Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
+    Route::get('/search', 'DetailsController@handleSearch')->name('search');
     Route::get('lease/{id}', 'DetailsController@lease')->name('books.lease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
-    
+
     Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
 

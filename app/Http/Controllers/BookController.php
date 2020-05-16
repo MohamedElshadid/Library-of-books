@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\BookController;
 use App\Book;
 use DB;
 use Auth ;
@@ -22,7 +23,7 @@ class BookController extends Controller
         //  var_dump( $books);
         return view('CategoryInfo',['books'=>$books]);
 
-     }
+    }
      public function create(Request $request)
     {
         
