@@ -16,6 +16,8 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 Route::middleware('admin')->group(function (){
     Route::get('chart-js','chartController@index');
     Route::get('relatedBooks','BookController@related_books');
@@ -38,9 +40,6 @@ Route::middleware('admin')->group(function (){
     // Route::resource('users', 'UserController');
     Route::get('users/{user}/edit', 'UserController@editAdmin')->name('users.editAdmin');
     Route::patch('users/{user}/update', 'UserController@updateAdmin')->name('users.updateAdmin');
-    
-    Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
-    Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
     
     ################################
     Route::get('/admins', 'UserController@showAdmin')->name('admins.showAdmin');
