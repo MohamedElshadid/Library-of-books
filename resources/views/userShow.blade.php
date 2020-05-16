@@ -57,11 +57,16 @@
                             </div>
                                 
                             <div class="card-body">
-                                <form action="" method="post">
+                                <form action="#" >
                                     @csrf
                                     <a href="{{route('books.view', $book)}}" class="btn btn-info">View</a>
                                     @if($book->available_copies !=0)
-                                    <a href="{{route('books.lease', $book)}}" class="btn btn-info">Lease</a>
+                                    <button data-toggle="collapse" class="btn btn-info" data-target="#demo">lease</button>
+                                    <div class="collapse" id="demo">
+                                        <input name="days" placeholder="Enter number of days" />
+                                    
+                                        <a href="{{route('books.lease', $book)}}" class="btn btn-info">save</a>
+                                    </div>
                                     @else
                                     <a href="" class="btn btn-danger">Lease</a>
                                     @endif
