@@ -63,7 +63,7 @@ Route::middleware('admin')->group(function (){
 Route::middleware('user')->group(function (){ 
     Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
     Route::get('/search', 'DetailsController@handleSearch')->name('search');
-    Route::get('lease/{id}', 'DetailsController@lease')->name('books.lease');
+    Route::post('lease', 'DetailsController@savelease')->name('savelease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
 
     Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');

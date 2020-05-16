@@ -13,6 +13,7 @@ class CreateLeasesTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('leases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('book_id');
@@ -25,6 +26,8 @@ class CreateLeasesTable extends Migration
             $table->softDeletes('deleted_at', 0);	
         });
     }
+
+
 
     /**
      * Reverse the migrations.

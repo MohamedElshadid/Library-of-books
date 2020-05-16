@@ -68,11 +68,11 @@
 
                                 <a href="{{route('books.view', $book)}}" class="btn btn-dark">View</a>
                                 @if($book->available_copies !=0)
-                                    <form action="lease/{{$book->id}}" method="post">
+                                    <form action="lease" method="post">
                                         @csrf
                                         <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$book->id}}">lease</button>
                                         <div class="collapse" id="demo{{$book->id}}" class="row">
-                                            <input name="days" placeholder="Enter number of days"  required/>
+                                            <input name="days" type="number" placeholder="Enter number of days"  required/>
                                             <input class="btn btn-info" value="save"  type="submit"/>
                                             <input type="hidden" name="book" value="{{$book}}" />
 
