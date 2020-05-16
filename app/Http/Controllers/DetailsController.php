@@ -109,7 +109,6 @@ class DetailsController extends Controller
             $book->decrement('available_copies');
         }
         return redirect()->route('userHome');
-
     }
 
     public function view($id){

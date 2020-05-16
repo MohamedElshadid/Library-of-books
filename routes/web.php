@@ -24,6 +24,7 @@ Route::middleware('admin')->group(function (){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/{id}', 'HomeController@destroy')->name('homeDestroy');
     Route::get('/CategoriesPage','CategoryController@index')->name('CategoriesPage');
+
     //routes used in category & books  part (maryam)
     
     
