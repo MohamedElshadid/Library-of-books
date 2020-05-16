@@ -19,7 +19,7 @@ class DetailsController extends Controller
     public function index()
     {
         //
-
+    
     }
 
     /**
@@ -100,6 +100,16 @@ class DetailsController extends Controller
     {
         $books=\App\Book::simplePaginate(4);
         $catagory = \App\Category::all();
+        $data = Lease::all();
+        // foreach($data as $obj){
+        //     dd($obj->expire_date);
+        // //    if ($obj->expire_date == Carbon::now()){
+
+        // //        $book = Book::find($obj->id);
+        // //        $book->increment('available_copies');
+        // //    }
+        // }
+        
         return view("userShow", ['books'=>$books, "catagory" => $catagory]);
     }
 
@@ -116,7 +126,7 @@ class DetailsController extends Controller
         $bklease->expire_date=Carbon::now()->addDays($request['days']);
         $bklease->save();
         $book = Book::find($obj['id']);
-        if($book->available_copies > 0){
+        if($book->available_copies > 0 ){
             $book->decrement('available_copies');
         }
         return redirect()->route('userHome');
