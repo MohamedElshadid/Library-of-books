@@ -57,24 +57,23 @@
                             </div>
                                 
                             <div class="card-body">
-                                {{-- <form action="related/$book->id" method="POST">
-                                    <input hidden name ="related" value='$book'/>
-                                </form>
-                                 --}}
-                                <form action="#" >
-                                    @csrf
-                                    <a href="{{route('books.view', $book)}}" class="btn btn-info">View</a>
-                                    @if($book->available_copies !=0)
-                                    <button data-toggle="collapse" class="btn btn-info" data-target="#demo">lease</button>
-                                    <div class="collapse" id="demo">
-                                        <input name="days" placeholder="Enter number of days" />
-                                    
-                                        <a href="{{route('books.lease', $book)}}" class="btn btn-info">save</a>
-                                    </div>
-                                    @else
-                                    <a href="" class="btn btn-danger">Lease</a>
-                                    @endif
-                                </form>
+
+                                <a href="{{route('books.view', $book)}}" class="btn btn-dark">View</a>
+                                @if($book->available_copies !=0)
+                                    <form action="lease/{{$book->id}}" method="post">
+                                        @csrf
+                                        <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$book->id}}">lease</button>
+                                        <div class="collapse" id="demo{{$book->id}}" class="row">
+                                            <input name="days" placeholder="Enter number of days"  required/>
+                                            <input class="btn btn-info" value="save"  type="submit"/>
+                                            <input type="hidden" name="book" value="{{$book}}" />
+
+                                            {{-- <a href="{{route('books.lease', $book)}}" class="btn btn-info">save</a> --}}
+                                        </div>       
+                                    </form>
+                                @else
+                                <a href="" class="btn btn-danger">Lease</a>
+                                @endif
                              
                             </div>
                             <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;bottom: 4%;" type="submit"><i class="fa fa-heart" style="font-size: 20px; color: red;" aria-hidden="true"></i>
