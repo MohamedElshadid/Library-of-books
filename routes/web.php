@@ -64,6 +64,7 @@ Route::middleware('user')->group(function (){
     Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
     Route::get('lease/{id}', 'DetailsController@lease')->name('books.lease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
+    Route::get('related/{id}', 'DetailsController@related_books')->name('related');
 
 });
 

@@ -1,47 +1,93 @@
 @extends('layouts.userNavbar')
 @section('content')
 
-<div class="overlay"></div>
-<div class="users">
-<div class="container">
-        
-    <div class="row">
-
-        <div class="col-md-3 mt-2" >
-                    <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
-                        <div class="card-header">                       
-                            <div>  <img src="<?php echo asset('storage/'.$books->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
-                            <div class="d-flex justify-content-end align-items-center">
-                                {{-- <small class="text-muted"> --}}
-                                    @component('components.rating')
-
-                                    @endcomponent
-                            </div>
-                            <h5> {{$books->title}}</h5>
-                            <h5>Author: {{$books->author}}</h5>
-                            {{-- <h5>Category: {{$book->category->name}}</h5>  --}}
-                            <h5>Price: {{$books->price}} $</h5> 
-                            @if($books->available_copies !=0)
-                            <h6>{{$books->available_copies}} Availble</h6>
-                            @else
-                            <h6>Not Availble</h6>
-                            @endif
-                            
-                            
-                        </div>
-                            
-                     
-                        <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;bottom: 4%;" type="submit"><i class="fa fa-heart" style="font-size: 20px; color: red;" aria-hidden="true"></i>
-                        </button>
-                        </div>
-
-                        </div>
+<div class="overlay" style="height:1250px"></div>
+<div class="users" style="height:1250px">
+    <div class="container" style="z-index:6;position:relative">
+        <div class="card" style="background-color:rgba(255, 255, 255, 0.7) !important;width:88% ">
+            <div class="card-header row">
+                <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;top:0;" type="submit">
+                    <i class="fa fa-heart" style="font-size: 31px; color: red;" aria-hidden="true"></i>
+                </button>                    
+                <div class="col-md-4">
+                    <img src="<?php echo asset('storage/'.$books->cover)?>" style="width:280px;height:220px;border:2px solid black ;" >
                 </div>
-    
-    </div>
+                <div class="col-md-8">
+                    <h5 style="color:black;font-weight: bold;"> Title: <strong class="text-primary" style="font-size:25px">{{$books->title}}</strong>
+                        <div style="width:30%;display:inline;position:relative;left: 10%;">
+                            {{-- <small class="text-muted"> --}}
+                                @component('components.rating')
 
-   
-</div>
-</div>
+                                @endcomponent
+                        </div>
+                    </h5>
+                    <h5 style="color:black;font-weight: bold;">Author: <strong class="text-primary" style="font-size:25px">{{$books->author}}</strong></h5>
+                    <h5 style="color:black;font-weight: bold;">Category: <strong class="text-primary" style="font-size:25px">{{$books->category->name}}</strong></h5>
+                    <h5 style="color:black;font-weight: bold;">Price: <strong class="text-primary" style="font-size:25px">{{$books->price}}$</strong></h5> 
+                    @if($books->available_copies !=0)
+                    <h6 style="color:black;font-weight: bold;"><strong>{{$books->available_copies}}</strong> Availble</h6>
+                    @else
+                    <h6 style="color:black;font-weight: bold;">Not Availble</h6>
+                    @endif
+                </div>
+            </div>
+            <form action="" method="">
+                <textarea style="width: 53%;height: 100px;position: relative;left:2%;resize:none" placeholder="Enter Your Comment"></textarea>
+                <input type="submit" class="btn btn-success btn-block" style="width: 53%;position: relative;left: 2%;font-weight: bold;" value="Add Your Comment"/>
+            </form>
+            <h1 class="h2" style="margin:20px">Comments</h1>
+            <div class="card" style="width: 96%;position: relative;left: 2%; margin-bottom:50px">
+                <div class="card-header">
+                    <h3>shadid</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="book" style="z-index:11">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="imgBx">
+                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
+                        </div>
+                        <div class="details">
+                            <h3>Title<br><span>{{$books->title}}</span></h3>
+                            <h3>Auther<br><span>{{$books->author}}</span></h3>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="imgBx">
+                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
+                        </div>
+                        <div class="details">
+                            <h3>Title<br><span>{{$books->title}}</span></h3>
+                            <h3>Auther<br><span>{{$books->author}}</span></h3>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="imgBx">
+                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
+                        </div>
+                        <div class="details">
+                            <h3>Title<br><span>{{$books->title}}</span></h3>
+                            <h3>Auther<br><span>{{$books->author}}</span></h3>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="imgBx">
+                        <img src="<?php echo asset('storage/'.$books->cover)?>" >
+                        </div>
+                        <div class="details">
+                            <h3>Title<br><span>{{$books->title}}</span></h3>
+                            <h3>Auther<br><span>{{$books->author}}</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

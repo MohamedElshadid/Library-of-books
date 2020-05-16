@@ -71,6 +71,10 @@
                                     <a href="" class="btn btn-danger">Lease</a>
                                     @endif
                                 </form>
+                                <!-- <form action="{{ route('related',$book->id) }}" method="get">
+                                    <input type="text" name="book_id" value="{{$book->id}}" hidden>
+                                    <input type="submit">
+                                </form> -->
                             </div>
                             <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;bottom: 4%;" type="submit"><i class="fa fa-heart" style="font-size: 20px; color: red;" aria-hidden="true"></i>
                             </button>
