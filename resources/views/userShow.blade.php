@@ -78,7 +78,7 @@
                                         @csrf
                                         <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$book->id}}">lease</button>
                                         <div class="collapse" id="demo{{$book->id}}" class="row">
-                                            <input name="days" type="number" placeholder="Enter number of days"  required/>
+                                            <input name="days" type="number" min="1" placeholder="Enter number of days"  required/>
                                             <input class="btn btn-info" value="save"  type="submit"/>
                                             <input type="hidden" name="book" value="{{$book}}" />
 
