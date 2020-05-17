@@ -101,14 +101,13 @@ class DetailsController extends Controller
         $books=\App\Book::simplePaginate(4);
         $catagory = \App\Category::all();
         $data = Lease::all();
-        // foreach($data as $obj){
-        //     dd($obj->expire_date);
-        // //    if ($obj->expire_date == Carbon::now()){
-
-        // //        $book = Book::find($obj->id);
-        // //        $book->increment('available_copies');
-        // //    }
-        // }
+        foreach($data as $obj){
+            if ($obj->expire_date == Carbon::today()->toDateString()){
+                $book = Book::find($obj->book_id);
+               $book->increment('available_copies');
+               $obj->delete(); 
+            }
+        }
         
         return view("userShow", ['books'=>$books, "catagory" => $catagory]);
     }
