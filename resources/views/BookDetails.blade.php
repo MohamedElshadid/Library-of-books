@@ -25,9 +25,9 @@
                     <h5 style="color:black;font-weight: bold;">Category: <strong class="text-primary" style="font-size:25px">{{$books->category->name}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Price: <strong class="text-primary" style="font-size:25px">{{$books->price}}$</strong></h5> 
                     @if($books->available_copies !=0)
-                    <h6 style="color:black;font-weight: bold;"><strong>{{$books->available_copies}}</strong> Availble</h6>
+                    <h6 style="color:black;font-weight: bold;"><strong>{{$books->available_copies}}</strong> Available</h6>
                     @else
-                    <h6 style="color:black;font-weight: bold;">Not Availble</h6>
+                    <h6 style="color:black;font-weight: bold;">Not Available</h6>
                     @endif
                 </div>
             </div>
