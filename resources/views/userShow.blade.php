@@ -60,12 +60,12 @@
 
                                 <a href="{{route('books.view', $book)}}" class="btn btn-dark">View</a>
                                 @if($book->available_copies !=0)
-                                    <form action="lease/{{$book->id}}" method="post">
+                                    <form action="lease" method="post" style="display:inline">
                                         @csrf
                                         <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$book->id}}">lease</button>
-                                        <div class="collapse" id="demo{{$book->id}}" class="row">
-                                            <input name="days" placeholder="Enter number of days"  required/>
-                                            <input class="btn btn-info" value="save"  type="submit"/>
+                                        <div class="collapse mt-1" id="demo{{$book->id}}" class="row">
+                                            <input name="days" class="form-control" type="number" placeholder="Enter number of days"  required/>
+                                            <input class="btn btn-info mt-1" style="position: relative;left: 40px;" value="save"  type="submit"/>
                                             <input type="hidden" name="book" value="{{$book}}" />
 
                                             {{-- <a href="{{route('books.lease', $book)}}" class="btn btn-info">save</a> --}}
@@ -83,7 +83,7 @@
                             </div>
                     </div>
             @empty
-                <h1>No Books</h1>
+            <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;">No matched books!!</h2>
             @endforelse
         </div>
 
