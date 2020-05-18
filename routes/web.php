@@ -65,6 +65,8 @@ Route::middleware('user')->group(function (){
     Route::get('/search', 'DetailsController@handleSearch')->name('search');
     Route::post('lease', 'DetailsController@savelease')->name('savelease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
+    Route::post('book/{id}/rating', 'DetailsController@rating')->name('books.rating');
+    
 
     Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');

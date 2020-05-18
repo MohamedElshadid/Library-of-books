@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+
 use App\Book;
 use App\Category;
 use App\Lease;
+use App\Rate;
+
 use Carbon\Carbon;
 use Auth;
 
@@ -139,4 +143,23 @@ class DetailsController extends Controller
         return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks]);
 
     }
+
+    public function rating($id, Request $request)
+    {
+       
+        $rate = Rate::updateOrCreate(
+            ['book_id' => $id, 'user_id' => Auth::user()->id],
+            ['rate' => $request->get('rating')]
+        );
+        // return [ 'rate' => $rate->rate];
+
+        // return view('BookDetails',[ 'rate' => $rate->rate]);
+        return redirect()->back()->with('success', 'Thank you for rating.');
+    }
+
+    // public function getRatingAttribute()
+    // {
+    //     return number_format(\DB::table('rates')->where('book_id', $this->attributes['id'])->average('rating'), 2);
+    // }
+
 }

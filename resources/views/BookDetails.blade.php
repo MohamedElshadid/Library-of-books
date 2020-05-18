@@ -21,6 +21,30 @@
                                 @endcomponent
                         </div>
                     </h5>
+
+                @if ($books)
+                {{-- Rating: {{ $rate }} / 5
+                <br /> --}}
+                {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+ --}}
+
+
+             <b>Rate the Book:</b>
+                <br />
+                <form action="{{ route('books.rating', [$books->id]) }}" method="post">
+                    {{ csrf_field() }}
+                    <select name="rating">
+                        <option value="1">1 - Awful</option>
+                        <option value="2">2 - Not too good</option>
+                        <option value="3">3 - Average</option>
+                        <option value="4" selected>4 - Quite good</option>
+                        <option value="5">5 - Awesome!</option>
+                    </select>
+                    <input type="submit" value="Rate" />
+                </form>
+                <hr />
+               @endif
                     <h5 style="color:black;font-weight: bold;">Author: <strong class="text-primary" style="font-size:25px">{{$books->author}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Category: <strong class="text-primary" style="font-size:25px">{{$books->category->name}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Price: <strong class="text-primary" style="font-size:25px">{{$books->price}}$</strong></h5> 
