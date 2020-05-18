@@ -146,24 +146,32 @@ class DetailsController extends Controller
         $book = Book::find($id);
         $category_id=Book::where('id','=',$id)->get("category_id")->first();
         $relbooks=Book::where('category_id','=',$category_id["category_id"])->where('id','!=', $id)->get();
-        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks]);
+        $rate=Rate::where('user_id','=',Auth::user()->id)->where('book_id','=',$id)->first();
+        if(!$rate)
+        {
+            return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks,'rate'=>0]);
+
+        }
+        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks,'rate'=>$rate->rate]);
+
 
     }
 
     public function rating($id, Request $request)
     {
-       
+        $book = Book::find($id);
         $rate = Rate::updateOrCreate(
             ['book_id' => $id, 'user_id' => Auth::user()->id],
             ['rate' => $request->get('rating')]
         );
+        // dd($rate);
         // return [ 'rate' => $rate->rate];
 
-        // return view('BookDetails',[ 'rate' => $rate->rate]);
+         //return view('BookDetails',[ 'rate' => $rate->rate ,'books'=>$book]);
         return redirect()->back()->with('success', 'Thank you for rating.');
     }
 
-    // public function getRatingAttribute()
+    // public function getRate()
     // {
     //     return number_format(\DB::table('rates')->where('book_id', $this->attributes['id'])->average('rating'), 2);
     // }

@@ -45,12 +45,6 @@
                         <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
                             <div class="card-header">                       
                                 <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
-                                <div class="d-flex justify-content-end align-items-center">
-                                    {{-- <small class="text-muted"> --}}
-                                        @component('components.userRating')
-
-                                        @endcomponent
-                                </div>
                                 <h5> {{$book->title}}</h5>
                                 <h5>Author: {{$book->author}}</h5>
                                 <h5>Category: {{$book->category->name}}</h5>

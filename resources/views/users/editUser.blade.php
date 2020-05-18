@@ -11,9 +11,9 @@
 
             <div>
                 {{----------------------- Collective HTML ----------------------}}
-                <div class="text-center mb-2">
+                <!-- <div class="text-center mb-2">
                     <img src="{{ asset('upload/' . Auth::user()->image) }}" style="width:70%;height:70%;border-radius:50%">
-                </div>
+                </div> -->
 
                 {!! Form::model($user,['route' =>['users.updateUser',$user],'method'=>'patch' , 'enctype'=>'multipart/form-data']) !!}
                     <div class="form-group" >

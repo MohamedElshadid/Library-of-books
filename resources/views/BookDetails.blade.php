@@ -14,27 +14,54 @@
                 </div>
                 <div class="col-md-8">
                     <h5 style="color:black;font-weight: bold;"> Title: <strong class="text-primary" style="font-size:25px">{{$books->title}}</strong>
-                        <div style="width:30%;display:inline;position:relative;left: 10%;">
-                            {{-- <small class="text-muted"> --}}
-                                @component('components.rating')
 
-                                @endcomponent
-                        </div>
                     </h5>
 
+                @if($rate)
+                    <div style="width:30%;display:inline;position:relative;left: 1%;font-size:20px">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                            {{-- <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span> --}}
+                            Your Rate:
+                            @for ($i = 0; $i < 5; $i++)
+                                @if ($i < $rate)
+                                <span class="fa fa-star checked"></span>
+                                @else
+                                    <span class="fa fa-star"></span>
+                                @endif
+                                
+                            @endfor
+
+                            <style>
+                                .checked{
+                                color: orange;
+                                }
+
+                            </style>
+                        </div>
+                @endif
+                
                 @if ($books)
-                {{-- Rating: {{ $rate }} / 5
-                <br /> --}}
-                {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
- --}}
-
-
-             <!-- <b>Rate the Book:</b>
-                <br />
-
-                <hr /> -->
+                <form action="{{ route('books.rating', [$books->id]) }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="rating">
+                        <input type="radio" name="rating" id="rating-5" value="5" >
+                        <label for="rating-5"></label>
+                        <input type="radio" name="rating" id="rating-4" value="4">
+                        <label for="rating-4"></label>
+                        <input type="radio" name="rating" id="rating-3" value="3">
+                        <label for="rating-3"></label>
+                        <input type="radio" name="rating" id="rating-2" value="2">
+                        <label for="rating-2"></label>
+                        <input type="radio" name="rating" id="rating-1" value="1" required>
+                        <label for="rating-1"></label>
+                    </div>
+                        <button type="submit" class="rate btn" >Rate</button>   
+                </form>
+                
                @endif
+
                     <h5 style="color:black;font-weight: bold;">Author: <strong class="text-primary" style="font-size:25px">{{$books->author}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Category: <strong class="text-primary" style="font-size:25px">{{$books->category->name}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Price: <strong class="text-primary" style="font-size:25px">{{$books->price}}$</strong></h5> 
@@ -74,8 +101,6 @@
                     </div>
                     @endforeach
                     
-                  
-                  
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
