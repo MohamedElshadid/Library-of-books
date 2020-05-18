@@ -3,7 +3,7 @@
 <span class="fa fa-star checked"></span>
 <span class="fa fa-star"></span> --}}
 @for ($i = 0; $i < 5; $i++)
-    @if ($i < 6)
+    @if ($i < $rate)
         <span class="fa fa-star checked"></span>
     @else
         <span class="fa fa-star"></span>

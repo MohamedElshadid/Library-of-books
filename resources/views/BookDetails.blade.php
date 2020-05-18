@@ -21,6 +21,20 @@
                                 @endcomponent
                         </div>
                     </h5>
+
+                @if ($books)
+                {{-- Rating: {{ $rate }} / 5
+                <br /> --}}
+                {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+ --}}
+
+
+             <!-- <b>Rate the Book:</b>
+                <br />
+
+                <hr /> -->
+               @endif
                     <h5 style="color:black;font-weight: bold;">Author: <strong class="text-primary" style="font-size:25px">{{$books->author}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Category: <strong class="text-primary" style="font-size:25px">{{$books->category->name}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Price: <strong class="text-primary" style="font-size:25px">{{$books->price}}$</strong></h5> 

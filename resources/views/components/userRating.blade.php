@@ -1,9 +1,9 @@
+
 <head>
     <link href="{{ asset('css/userRating.css') }}" rel="stylesheet">
 </head>
-{!! Form::open() !!}
+{!! Form::open(['route' => 'books.rating',$books->id) ]) !!}
     <div class="rating">
-        <input type="hidden" name="bookId" >
         <input type="radio" name="rating" id="rating-5" value="5" >
         <label for="rating-5"></label>
         <input type="radio" name="rating" id="rating-4" value="4">

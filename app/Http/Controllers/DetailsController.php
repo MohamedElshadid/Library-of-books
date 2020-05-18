@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+
 use App\Book;
 use App\Category;
 use App\Lease;
+use App\Rate;
+
 use Carbon\Carbon;
 use Auth;
 
@@ -19,7 +23,7 @@ class DetailsController extends Controller
     public function index()
     {
         //
-
+    
     }
 
     /**
@@ -106,6 +110,15 @@ class DetailsController extends Controller
     {
         $books=\App\Book::simplePaginate(4);
         $catagory = \App\Category::all();
+        $data = Lease::all();
+        foreach($data as $obj){
+            if ($obj->expire_date == Carbon::today()->toDateString()){
+                $book = Book::find($obj->book_id);
+               $book->increment('available_copies');
+               $obj->delete(); 
+            }
+        }
+        
         return view("userShow", ['books'=>$books, "catagory" => $catagory]);
     }
 
@@ -122,7 +135,7 @@ class DetailsController extends Controller
         $bklease->expire_date=Carbon::now()->addDays($request['days']);
         $bklease->save();
         $book = Book::find($obj['id']);
-        if($book->available_copies > 0){
+        if($book->available_copies > 0 && $request['days']>0){
             $book->decrement('available_copies');
         }
         return redirect()->route('userHome');
@@ -136,4 +149,23 @@ class DetailsController extends Controller
         return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks]);
 
     }
+
+    public function rating($id, Request $request)
+    {
+       
+        $rate = Rate::updateOrCreate(
+            ['book_id' => $id, 'user_id' => Auth::user()->id],
+            ['rate' => $request->get('rating')]
+        );
+        // return [ 'rate' => $rate->rate];
+
+        // return view('BookDetails',[ 'rate' => $rate->rate]);
+        return redirect()->back()->with('success', 'Thank you for rating.');
+    }
+
+    // public function getRatingAttribute()
+    // {
+    //     return number_format(\DB::table('rates')->where('book_id', $this->attributes['id'])->average('rating'), 2);
+    // }
+
 }

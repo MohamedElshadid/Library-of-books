@@ -36,11 +36,11 @@ Route::middleware('admin')->group(function (){
     
     Route::post('store','BookController@store');
     //delete book from category
-     Route::get('category/bookDestroy/{id}','BookController@destroy');
-     ###################################################
+    Route::get('category/bookDestroy/{id}','BookController@destroy');
+    ###################################################
     // Route::resource('users', 'UserController');
-    Route::get('users/{user}/edit', 'UserController@editAdmin')->name('users.editAdmin');
-    Route::patch('users/{user}/update', 'UserController@updateAdmin')->name('users.updateAdmin');
+    Route::get('users/{user}/editAdmin', 'UserController@editAdmin')->name('users.editAdmin');
+    Route::patch('users/{user}/updateAdmin', 'UserController@updateAdmin')->name('users.updateAdmin');
     
     ################################
     Route::get('/admins', 'UserController@showAdmin')->name('admins.showAdmin');
@@ -65,7 +65,11 @@ Route::middleware('user')->group(function (){
     Route::get('/search', 'DetailsController@handleSearch')->name('search');
     Route::post('lease', 'DetailsController@savelease')->name('savelease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
-   
+    Route::post('book/{id}/rating', 'DetailsController@rating')->name('books.rating');
+    
+
+    Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
+    Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
 
 });
 

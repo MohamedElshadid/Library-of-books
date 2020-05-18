@@ -4,6 +4,13 @@
 <div class="overlay"></div>
 <div class="users">
 <nav style="position:relative;z-index:8">
+    {{--------- Flash Session -------}}
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+    
     <form action="" method="GET" style="display:inline-block;width:30%">
         <a class="text-light" style="font-size:20px"> Order By : </a>
         {{-- <label >order by : </label> --}}
@@ -17,6 +24,7 @@
         <input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
         <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="search">
     </form>
+    
 </nav>
 <div class="d-flex py-5 " style="position:relative;z-index:8">
     <div class="list-group" style="width:18%">
@@ -39,7 +47,7 @@
                                 <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
                                 <div class="d-flex justify-content-end align-items-center">
                                     {{-- <small class="text-muted"> --}}
-                                        @component('components.rating')
+                                        @component('components.userRating')
 
                                         @endcomponent
                                 </div>
@@ -48,9 +56,9 @@
                                 <h5>Category: {{$book->category->name}}</h5>
                                 <h5>Price: {{$book->price}} $</h5> 
                                 @if($book->available_copies !=0)
-                                <h6>{{$book->available_copies}} Availble</h6>
+                                <h6>{{$book->available_copies}} Available</h6>
                                 @else
-                                <h6>Not Availble</h6>
+                                <h6>Not Available</h6>
                                 @endif
                                 
                                 
@@ -63,9 +71,9 @@
                                     <form action="lease" method="post" style="display:inline">
                                         @csrf
                                         <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$book->id}}">lease</button>
-                                        <div class="collapse mt-1" id="demo{{$book->id}}" class="row">
-                                            <input name="days" class="form-control" type="number" placeholder="Enter number of days"  required/>
-                                            <input class="btn btn-info mt-1" style="position: relative;left: 40px;" value="save"  type="submit"/>
+                                        <div class="collapse" id="demo{{$book->id}}" class="row">
+                                            <input name="days" type="number" min="1" placeholder="Enter number of days"  required/>
+                                            <input class="btn btn-info" value="save"  type="submit"/>
                                             <input type="hidden" name="book" value="{{$book}}" />
 
                                             {{-- <a href="{{route('books.lease', $book)}}" class="btn btn-info">save</a> --}}
