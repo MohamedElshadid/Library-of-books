@@ -91,21 +91,7 @@ class DetailsController extends Controller
     {
         //
     }
-    function handleSearch(Request $request)
-    {
-        $userSearch = $request->search;
-        if($userSearch !=''){
-            $catagory = \App\Category::all();
-            $books = Book::where("title", "like", "$userSearch")->orWhere("author", "like", "$userSearch")->simplePaginate(4);
-            return view("userShow", ["books" => $books, "catagory" => $catagory]);
-        } else {
-            $books=\App\Book::simplePaginate(4);
-            $catagory = \App\Category::all();
-            return view("userShow", ['books'=>$books, "catagory" => $catagory]); 
-        }
-        
 
-    }
     public function userIndex(Request $request)
     {
         $books=\App\Book::simplePaginate(4);

@@ -11,14 +11,10 @@
         </div>
     @endif
     
-    <form action="" method="GET" style="display:inline-block;width:30%">
-        <a class="text-light" style="font-size:20px"> Order By : </a>
-        {{-- <label >order by : </label> --}}
-        <input class="btn btn-success btn-lg" type="submit" name="latest" value="latest">
-        <input class="btn btn-success btn-lg" type="submit" name="rate" value="rate">
-        <input type="hidden" name="sortdata" value="">
-        <input type="hidden" name="sortvalue" value="">
-    </form>
+    <a class="text-light" style="font-size:20px"> Order By : </a>
+    {{-- <label >order by : </label> --}}
+    <a class="btn btn-success btn-lg" href="{{route('sort.latest')}}">Latest</a>
+    <a class="btn btn-success btn-lg" href="{{route('sort.rate')}}">Rate</a>
 
     <form class="form-inline" action="{{route('search')}}" method="GET" style="display:inline-block;width:20%;position: absolute;left: 77%;">
         <input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
