@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 use App\Book;
 use App\Category;
@@ -127,7 +129,49 @@ class DetailsController extends Controller
         return redirect()->route('userHome');
 
     }
+    public static function getChartData()
+    {
+        $data = DB::table('leases')
+            ->select('date', 'price')
+            ->get();
+        $chartData = array();
+        $profit = 0;
+        $index = 1;
+        $first = DB::table('leases')->select('date')->get()->first();
+        $week = (new Carbon($first->date))->addDays(6);
 
+        foreach ($data as $obj) {
+            if ($obj->date <= $week) {
+                $profit += $obj->price;
+            } else {
+                $chartData[] = ['week' => 'Week '.$index++, 'profit' => $profit];
+                $profit = $obj->price;
+                $week = (new Carbon($first->date))->addDays(7);
+                $first->date = $week;
+            }
+        }
+        $chartData[] = ['week' => 'Week '.$index++, 'profit' => $profit];
+
+        return  $chartData;
+    }
+    public static function getLeaseDate(array $cahrtData)
+    {
+        $dates = array();
+        foreach ($cahrtData as $date) {
+            $dates[] = $date['week'];
+        }
+
+        return $dates;
+    }
+    public static function getLeaseProfits(array $cahrtData)
+    {
+        $profits = array();
+        foreach ($cahrtData as $profit) {
+            $profits[] = $profit['profit'];
+        }
+
+        return $profits;
+    }
     public function view($id){
         $book = Book::find($id);
         $category_id=Book::where('id','=',$id)->get("category_id")->first();

@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Font Icon -->
 </head>
 <body>
@@ -37,6 +38,9 @@
 
                 <a class="navbar-brand" href="{{ route('users.showUser', Auth::id()) }}">
                     {{ __('All Users') }}
+                </a>
+                <a class="navbar-brand" href="{{ route('admin.report') }}">
+                    {{ __('Reports') }}
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

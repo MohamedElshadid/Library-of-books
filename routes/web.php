@@ -32,6 +32,7 @@ Route::middleware('admin')->group(function (){
     Route::resource('categories', 'CategoryController');
     //list books in specific category 
     Route::get('category/{id}','BookController@index');
+
     //store book info in category 
     
     Route::post('store','BookController@store');
@@ -51,6 +52,7 @@ Route::middleware('admin')->group(function (){
     
     Route::get('users/{users}/deactivate', 'UserController@deactivate')->name('users.deactivate');
     Route::get('users/{users}/activate', 'UserController@activate')->name('users.activate');
+    Route::get('reports', 'UserChartController@index')->name('admin.report');
     #############################################
 
 
