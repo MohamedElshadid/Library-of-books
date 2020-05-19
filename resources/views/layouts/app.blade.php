@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Mktabty</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Font Icon -->
 </head>
 <body>
@@ -31,20 +32,17 @@
                     {{ __('Categories') }}
                 </a>
 
-                  <a class="navbar-brand" href="{{ route('admins.showAdmin', Auth::id()) }}">
+                <a class="navbar-brand" href="{{ route('admins.showAdmin', Auth::id()) }}">
                     {{ __('All Admins') }}
                 </a>
 
                 <a class="navbar-brand" href="{{ route('users.showUser', Auth::id()) }}">
                     {{ __('All Users') }}
                 </a>
-
-                {{-- <a class="navbar-brand" href="{{ route('users.editAdmin', Auth::id()) }}">
-                    {{ __('Edit Profile') }}
+                <a class="navbar-brand" href="{{ route('admin.report') }}">
+                    {{ __('Reports') }}
                 </a>
-                 --}}
-               
-              
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

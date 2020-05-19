@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.userNavbar')
 
 @section('content')
 <div class="overlay"></div>
@@ -15,7 +15,7 @@
                     <img src="{{ asset('upload/' . Auth::user()->image) }}" style="width:70%;height:70%;border-radius:50%">
                 </div> -->
 
-                {!! Form::model($user,['route' =>['users.updateAdmin',$user],'method'=>'patch' , 'enctype'=>'multipart/form-data']) !!}
+                {!! Form::model($user,['route' =>['users.updateUser',$user],'method'=>'patch' , 'enctype'=>'multipart/form-data']) !!}
                     <div class="form-group" >
                         {!! Form::text('username',NULL,['class'=>'form-control mb-2']) !!}
                         @error('username')

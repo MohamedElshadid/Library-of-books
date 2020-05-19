@@ -10,8 +10,14 @@ class Book extends Model
     use SoftDeletes;
 
     protected $fillable = ['title','author','cover','price','available_copies'];
+    
     public function category(){
         return $this->belongsTo('App\Category');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 
 

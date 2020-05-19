@@ -24,13 +24,13 @@ class BookController extends Controller
         return view('CategoryInfo',['books'=>$books]);
 
     }
-     public function create(Request $request)
+    public function create(Request $request)
     {
-        
-        //create book form 
-        
-        return view('home');
-     }
+
+    //create book form 
+
+    return view('home');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -102,6 +102,7 @@ class BookController extends Controller
     
    
     }
+
     /**
      * Remove the specified resource from storage.
      *

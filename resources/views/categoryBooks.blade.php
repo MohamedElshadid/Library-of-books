@@ -23,13 +23,7 @@
                             <div> 
 
                             <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
-                            <div class="d-flex justify-content-end align-items-center">
-                                    {{-- <small class="text-muted"> --}}
-                                        @component('components.rating')
-
-                                        @endcomponent
-                                </div>
-                                <h5> {{$book->title}}</h5> 
+                            <h5> {{$book->title}}</h5> 
                            <h5> Author : {{$book->author}}</h5> 
                            <h5>Price : {{$book->price}} </h5>
                            @if($book->available_copies !=0)

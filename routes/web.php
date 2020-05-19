@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::middleware('admin')->group(function (){
     Route::get('chart-js','chartController@index');
     Route::get('relatedBooks','BookController@related_books');
@@ -32,16 +33,17 @@ Route::middleware('admin')->group(function (){
     Route::resource('categories', 'CategoryController');
     //list books in specific category 
     Route::get('category/{id}','BookController@index');
+
     //store book info in category 
     
     Route::post('store','BookController@store');
     Route::put('updateBook/{id}','BookController@update')->name('updateBook');
     //delete book from category
-     Route::get('category/bookDestroy/{id}','BookController@destroy');
-     ###################################################
+    Route::get('category/bookDestroy/{id}','BookController@destroy');
+    ###################################################
     // Route::resource('users', 'UserController');
-    Route::get('users/{user}/edit', 'UserController@editAdmin')->name('users.editAdmin');
-    Route::patch('users/{user}/update', 'UserController@updateAdmin')->name('users.updateAdmin');
+    Route::get('users/{user}/editAdmin', 'UserController@editAdmin')->name('users.editAdmin');
+    Route::patch('users/{user}/updateAdmin', 'UserController@updateAdmin')->name('users.updateAdmin');
     
     ################################
     Route::get('/admins', 'UserController@showAdmin')->name('admins.showAdmin');
@@ -52,6 +54,7 @@ Route::middleware('admin')->group(function (){
     
     Route::get('users/{users}/deactivate', 'UserController@deactivate')->name('users.deactivate');
     Route::get('users/{users}/activate', 'UserController@activate')->name('users.activate');
+    Route::get('reports', 'UserChartController@index')->name('admin.report');
     #############################################
 
 
@@ -71,5 +74,17 @@ Route::middleware('user')->group(function (){
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
 
     Route::get('cat/{id}', 'DetailsController@CategoryBooks');
+    Route::get('/search', 'UserHomeController@handleSearch')->name('search');
+    Route::get('/latest', 'UserHomeController@handleLatest')->name('sort.latest');
+    Route::get('/rate', 'UserHomeController@handleRate')->name('sort.rate');
+    Route::post('lease', 'DetailsController@savelease')->name('savelease');
+    Route::get('book/{id}', 'DetailsController@view')->name('books.view');
+    Route::post('book/{id}/rating', 'DetailsController@rating')->name('books.rating');
+    
+
+    Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
+    Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
+
+    Route::resource('comments', 'CommentController');
 });
 

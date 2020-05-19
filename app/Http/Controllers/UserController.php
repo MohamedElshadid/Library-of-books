@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 
 
@@ -13,38 +16,81 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
+    // =========================== Admin ==============================
     public function editAdmin(User $user)
     {   
         $user = Auth::user();
         return view('users.editAdmin', compact('user'));
     }
 
-    public function updateAdmin(User $user)
-    { 
-        $this->validate(request(), [
+    public function updateAdmin(Request $request, $id)
+    {
+        $validatedData = $request->validate([
             'username' => ['string', 'max:255'],
-            'email' => ['string', 'email', 'max:255'],
             // 'image' => ['required'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'old_password' => ['required' , 'string', 'min:8'],
+            'new_password' => ['string', 'min:8']
         ]);
 
-        // $imageName = time() . '.' . $user['image']->getClientOriginalExtension();
-
-        // $user['image']->move(
-        // base_path() . '/public/upload/', $imageName);
-
-        $user->username = request('username');
-        $user->email = request('email');
-        // $user->image = $imageName;
-        $user->password = bcrypt(request('password'));
-
-        $user->save();
-
-        return redirect()->route('home')->with('success', 'Profile has been updated successfully..');;
+        // if($request->hasFile('image')) {
+        //     $image_name = $request->file('image')->getClientOriginalName();              
+        //     $image_path = $request->file('image')->store('public/upload/'); 
+        //     $user->image = Storage::url($image_name);
+        //     Input::file('image')->move($image_path, $image_name);
+        //     $request->file('image')->move(
+        //         base_path() . '/public/upload/', $image_name);
+        // }
+        $user = User::find(Auth::id());
+        $newPassword = $request['old_password'];
+        $oldPassword = User::find(Auth::id())->password;
+        if (Hash::check($newPassword, $oldPassword)) {
+            $user->password = Hash::make($request['new_password']);
+            User::findOrFail($id)->update($request->all());
+            $user->save();
+            return redirect()->route('home')->with('success', 'Profile has been updated successfully..');
+        }
+        else{
+            return redirect()->route('users.editAdmin',$user)->with('danger', 'Please Enter the correct old password');
+        }
+    }
+    // =========================== User ==========================
+    public function editUser(User $user)
+    {   
+        $user = Auth::user();
+        return view('users.editUser', compact('user'));
     }
 
+    public function updateUser(Request $request, $id)
+    { 
+        $validatedData = $request->validate([
+            'username' => ['string', 'max:255'],
+            // 'image' => ['required'],
+            'old_password' => ['required' , 'string', 'min:8'],
+            'new_password' => ['string', 'min:8']
+        ]);
 
+        // if($request->hasFile('image')) {
+        //     $image_name = $request->file('image')->getClientOriginalName();              
+        //     $image_path = $request->file('image')->store('public/upload/'); 
+        //     $user->image = Storage::url($image_name);
+        //     Input::file('image')->move($image_path, $image_name);
+        //     $request->file('image')->move(
+        //         base_path() . '/public/upload/', $image_name);
+        // }
+        $user = User::find(Auth::id());
+        $newPassword = $request['old_password'];
+        $oldPassword = User::find(Auth::id())->password;
+        if (Hash::check($newPassword, $oldPassword)) {
+            $user->password = Hash::make($request['new_password']);
+            User::findOrFail($id)->update($request->all());
+            $user->save();
+            return redirect()->route('userHome')->with('success', 'Profile has been updated successfully..');
+        }
+        else{
+            return redirect()->route('users.editUser',$user)->with('danger', 'Please Enter the correct old password');
+        }        
+    }
+    // ===============================================================
     public function showUser(){
         
         $users = User::whereIn('is_admin', [0])->get();
