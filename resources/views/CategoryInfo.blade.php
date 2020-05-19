@@ -13,6 +13,7 @@
             <th scope="col">Price</th>
             <th scope="col">Available copies</th>
             <th scope="col">Book cover</th>
+            <th scope="col">Update</th>
             <th scope="col">Delete</th>
             </tr>
         </thead>
@@ -29,15 +30,35 @@
 
             <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100px;height:100px;border:2px solid black ;" />
             </td>
-         
+         <td>
+         <a class="btn btn-info"data-toggle="collapse" href="#collapseupdateform" role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
+                
+         <div class="collapse" id="collapseupdateform">
+                                             
+                                             {!! Form::model($book,['route' =>['updateBook',$book->id],'method'=>'put','class'=>'form','files'=> true ])  !!}
+                                                 <div class="form-group" >   
+                                                     <br/>{!! Form::text('title',NULL,['class'=>'form-check-input']) !!}
+                                                     <br/> {!! Form::text('author',NULL,['class'=>'form-check-input']) !!}
+                                                     <br/>  {!! Form::number('price',NULL,['class'=>'form-check-input']) !!}
+                                                     <br/>   {!! Form::number('available_copies',NULL,['class'=>'form-check-input']) !!}
+                                                     <br/>   {!! Form::file('cover',['required' => 'required']) !!}
+
+                                                 </div>
+                                                 <br/>{!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
+                                             {!! Form::close() !!}
+                                         </div>
+         </td>
+
 <td>
             <form action="" method="post">
             @csrf
             @method('delete')
-                 <a href="bookDestroy/{{$book->id}}" class="btn btn-danger">Delete</a>
+                 <a href="bookDestroy/{{$book->id}}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
             </form>
             </td> 
-            </tr>    
+            </tr> 
+      
+
          @endforeach
          
         </tbody>

@@ -11,18 +11,21 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/swiper.min.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/swiper.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Font Icon -->
 </head>
 <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{ route('userHome') }}">
                 {{ __( 'Mktabty') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -33,7 +36,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     <li class="navbar-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{route('myFavourites')}}">
                             {{ "Favorites" }}
                         </a>
                     </li>

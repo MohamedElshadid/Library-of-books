@@ -61,7 +61,7 @@
                                                 {!! Form::close() !!}
                                             </div>
                                                 {!! Form::open(['route' => ['categories.destroy',$category],'method'=>'delete','class'=>'form']) !!}
-                                                {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
+                                                <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure?')"/>
                                                 {!! Form::close() !!}
                                            
                                         </td>

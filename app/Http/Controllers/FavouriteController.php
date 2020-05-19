@@ -17,21 +17,14 @@ class FavouriteController extends Controller
      */
     public function index()
     {
-        //
-        $categories=Category::all();
-        return view('CategoriesPage',['categories'=>$categories]);
+        //list favourites for each user
+        $favourites = DB::table('books')
+        ->join('favourites','favourites.book_id','=', 'books.id' )
+        ->where('favourites.user_id','=',Auth::id())
+        ->get();
+      
+        return view('FavouritesPage',['favourites'=>$favourites]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //create category form 
-        return view('CategoriesPage');
-     }
 
     /**
      * Store a newly created resource in storage.
@@ -43,10 +36,20 @@ class FavouriteController extends Controller
     {
         //store favourite book to favourite list
 
-        $favourite=new Favourite ;
-        $favourite->book_id =$request->bookID;
-        $favourite->user_id=Auth::id();
-        $favourite->save();
+        // $favourite=new Favourite ;
+        // $favourite->book_id =$request->bookID;
+        // $favourite->user_id=Auth::id();
+        // if(Favourite::where('user_id LIKE' . Auth::id() .' and book_id LIKE  '.$request->book_id) {
+            
+        //     } else {
+        //         $favourite->save();
+        //     }
+       
+             $favourite=Favourite::firstOrNew(['book_id' => $request->bookID , 'user_id'=> Auth::id()]);
+                // $favourite->book_id =$request->bookID;
+                // $favourite->user_id=Auth::id();
+                $favourite->save();
+        
     //redirect
     return redirect()->route('home');
     }

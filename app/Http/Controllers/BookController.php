@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\BookController;
 use App\Book;
 use DB;
 use Auth ;
@@ -13,12 +14,7 @@ class BookController extends Controller
     //
 
 
-    public function related_books(Request $request){
-        $book_id=$request->input('book_id');
-        $category_id=Book::where('id','=',$book_id)->get("category_id")->first();
-        $books=Book::where('category_id','=',$category_id["category_id"])->where('id','!=', $book_id)->get();
-        return view("relatedBooks",["books" => $books]);
-    }
+
     public function index($id)
     {
         
@@ -27,7 +23,7 @@ class BookController extends Controller
         //  var_dump( $books);
         return view('CategoryInfo',['books'=>$books]);
 
-     }
+    }
      public function create(Request $request)
     {
         
@@ -56,7 +52,7 @@ class BookController extends Controller
       
         //store data of book to category
         $book=new Book ;
-     
+        $book->id=$request->id;
         $book->title=$request->title;
         $book->author=$request->author;
         $book->available_copies=$request->available_copies;
@@ -77,6 +73,35 @@ class BookController extends Controller
     }
 
     
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $book=Book::find($id) ;
+        $book->id=$request->id;
+        $book->title=$request->title;
+        $book->author=$request->author;
+        $book->available_copies=$request->available_copies;
+        
+        $bookImage = time() . '.' . $request['cover']->getClientOriginalExtension();
+
+        $request['cover']->move(
+        base_path() . '/public/storage', $bookImage); 
+        $book->cover=$bookImage;
+
+        $book->price=$request->price;
+       
+        $book->save();
+    //redirect
+    return redirect ('/category/'.$book->category_id);
+    
+   
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -91,7 +116,5 @@ class BookController extends Controller
         return redirect ('/category/'.$book->category_id);
     }
 
-    
-    
-
+  
 }
