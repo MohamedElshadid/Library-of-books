@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Book;
 use App\Category;
 use App\Lease;
+use App\Comment;
 use Carbon\Carbon;
 use Auth;
 
@@ -135,8 +136,9 @@ class DetailsController extends Controller
     public function view($id){
         $book = Book::find($id);
         $category_id=Book::where('id','=',$id)->get("category_id")->first();
+        $comments = Comment::all();
         $relbooks=Book::where('category_id','=',$category_id["category_id"])->where('id','!=', $id)->get();
-        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks]);
+        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments]);
 
     }
 }

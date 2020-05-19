@@ -4,7 +4,14 @@
 <div class="overlay" style="height:1250px"></div>
 <div class="users" style="height:1250px">
     <div class="container" style="z-index:6;position:relative">
-        <div class="card" style="background-color:rgba(255, 255, 255, 0.7) !important;width:88% ">
+        {{--------- Flash Session -------}}
+        @if(Session::has('success'))
+            <div class="alert alert-success col-10 offset-1">
+                {{ Session::get('success') }}
+            </div>
+        @endif
+        
+        <div class="card col-10 offset-1" style="background-color:rgba(255, 255, 255, 0.7) !important;width:88% ">
             <div class="card-header row">
                 <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;top:0;" type="submit">
                     <i class="fa fa-heart" style="font-size: 31px; color: red;" aria-hidden="true"></i>
@@ -31,19 +38,35 @@
                     @endif
                 </div>
             </div>
-            <form action="" method="">
-                <textarea style="width: 53%;height: 100px;position: relative;left:2%;resize:none" placeholder="Enter Your Comment"></textarea>
-                <input type="submit" class="btn btn-success btn-block" style="width: 53%;position: relative;left: 2%;font-weight: bold;" value="Add Your Comment"/>
-            </form>
-            <h1 class="h2" style="margin:20px">Comments</h1>
-            <div class="card" style="width: 96%;position: relative;left: 2%; margin-bottom:50px">
-                <div class="card-header">
-                    <h3>shadid</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
+            {{--------------- Add Comments ----------------}}
+            <div class="container mt-2 mb-2">
+                @if (Auth::check())
+                    {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
+                    <div class="form-group">
+                        {!! Form::textarea('body', null, ['class'=>'form-control','placeholder'=>'Write your comment here...']) !!}
+                        @error('body')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    {{ Form::hidden('book_id', $books->id) }}
+                    {!! Form::submit('Add', ['class'=>'btn btn-info btn-block']) !!}
+                {{ Form::close() }}
+                @endif
+                {{----------- List Comments -----------}}
+                <h3 class="alert alert-warning mt-2">Comments</h3>
+                @forelse ($comments as $comment)
+                    <p>{{ $comment->user->username }} </p>
+                    <p>{{ $comment->user_id }}</p>
+                    <p>{{ $comment->created_at }}</p>
+                    <p>{{ $comment->body }}</p>
+                    <p>{{ $comment->book->title }}</p>
+                    <p>{{ $comment->book_id }}</p>
+                    <hr>
+                @empty
+                    <p class="alert alert-danger">This Book has no comments</p>
+                @endforelse
+                {{------------- End of Comments --------------}}
+            </div>           
         </div>
         <div class="book" style="z-index:11">
             <div class="swiper-container">
