@@ -21,6 +21,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/swiper.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/userRating.css') }}" rel="stylesheet">
+
     <!-- Font Icon -->
 </head>
 <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
@@ -65,7 +67,7 @@
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="top: 36px;">
                                     <a class="dropdown-item" href="{{ route('users.editUser', Auth::id()) }}">
                                         {{ __('Edit Profile') }}
                                     </a>

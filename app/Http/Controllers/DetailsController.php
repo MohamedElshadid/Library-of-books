@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+
 use App\Book;
 use App\Category;
 use App\Lease;
 use App\Comment;
+use App\Rate;
+
 use Carbon\Carbon;
 use Auth;
 
@@ -88,15 +92,7 @@ class DetailsController extends Controller
     {
         //
     }
-    function handleSearch(Request $request)
-    {
-        $userSearch = $request->search;
-        $catagory = \App\Category::all();
-        $books = Book::where("title", "like", "$userSearch")->orWhere("author", "like", "$userSearch")->simplePaginate(4);
-        // dd($books);
-        return view("userShow", ["books" => $books, "catagory" => $catagory]);
 
-    }
     public function userIndex(Request $request)
     {
         $books=\App\Book::simplePaginate(4);
@@ -138,7 +134,34 @@ class DetailsController extends Controller
         $category_id=Book::where('id','=',$id)->get("category_id")->first();
         $comments = Comment::all();
         $relbooks=Book::where('category_id','=',$category_id["category_id"])->where('id','!=', $id)->get();
-        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments]);
+        $rate=Rate::where('user_id','=',Auth::user()->id)->where('book_id','=',$id)->first();
+        if(!$rate)
+        {
+            return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,'rate'=>0]);
+
+        }
+        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,'rate'=>$rate->rate]);
+
 
     }
+
+    public function rating($id, Request $request)
+    {
+        $book = Book::find($id);
+        $rate = Rate::updateOrCreate(
+            ['book_id' => $id, 'user_id' => Auth::user()->id],
+            ['rate' => $request->get('rating')]
+        );
+        // dd($rate);
+        // return [ 'rate' => $rate->rate];
+
+         //return view('BookDetails',[ 'rate' => $rate->rate ,'books'=>$book]);
+        return redirect()->back()->with('success', 'Thank you for rating.');
+    }
+
+    // public function getRate()
+    // {
+    //     return number_format(\DB::table('rates')->where('book_id', $this->attributes['id'])->average('rating'), 2);
+    // }
+
 }

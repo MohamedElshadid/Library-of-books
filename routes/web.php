@@ -63,9 +63,13 @@ Route::middleware('admin')->group(function (){
 
 Route::middleware('user')->group(function (){ 
     Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
-    Route::get('/search', 'DetailsController@handleSearch')->name('search');
+    Route::get('/search', 'UserHomeController@handleSearch')->name('search');
+    Route::get('/latest', 'UserHomeController@handleLatest')->name('sort.latest');
+    Route::get('/rate', 'UserHomeController@handleRate')->name('sort.rate');
     Route::post('lease', 'DetailsController@savelease')->name('savelease');
-    Route::get('/book/{id}', 'DetailsController@view')->name('books.view');
+    Route::get('book/{id}', 'DetailsController@view')->name('books.view');
+    Route::post('book/{id}/rating', 'DetailsController@rating')->name('books.rating');
+    
 
     Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');

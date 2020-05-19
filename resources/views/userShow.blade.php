@@ -17,14 +17,10 @@
         </div>
     @endif
     
-    <form action="" method="GET" style="display:inline-block;width:30%">
-        <a class="text-light" style="font-size:20px"> Order By : </a>
-        {{-- <label >order by : </label> --}}
-        <input class="btn btn-success btn-lg" type="submit" name="latest" value="latest">
-        <input class="btn btn-success btn-lg" type="submit" name="rate" value="rate">
-        <input type="hidden" name="sortdata" value="">
-        <input type="hidden" name="sortvalue" value="">
-    </form>
+    <a class="text-light" style="font-size:20px"> Order By : </a>
+    {{-- <label >order by : </label> --}}
+    <a class="btn btn-success btn-lg" href="{{route('sort.latest')}}">Latest</a>
+    <a class="btn btn-success btn-lg" href="{{route('sort.rate')}}">Rate</a>
 
     <form class="form-inline" action="{{route('search')}}" method="GET" style="display:inline-block;width:20%;position: absolute;left: 77%;">
         <input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
@@ -51,12 +47,6 @@
                         <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
                             <div class="card-header">                       
                                 <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
-                                <div class="d-flex justify-content-end align-items-center">
-                                    {{-- <small class="text-muted"> --}}
-                                        @component('components.rating')
-
-                                        @endcomponent
-                                </div>
                                 <h5> {{$book->title}}</h5>
                                 <h5>Author: {{$book->author}}</h5>
                                 <h5>Category: {{$book->category->name}}</h5>
@@ -74,7 +64,7 @@
 
                                 <a href="{{route('books.view', $book)}}" class="btn btn-dark">View</a>
                                 @if($book->available_copies !=0)
-                                    <form action="lease" method="post">
+                                    <form action="lease" method="post" style="display:inline">
                                         @csrf
                                         <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$book->id}}">lease</button>
                                         <div class="collapse" id="demo{{$book->id}}" class="row">
@@ -97,7 +87,7 @@
                             </div>
                     </div>
             @empty
-                <h1 >No Books</h1>
+            <h2 class="alert alert-primary text-center" style="width:50%;margin:0px auto;background-color:rgba(255, 255, 255, 0.7) !important;">No matched books!!</h2>
             @endforelse
         </div>
 
