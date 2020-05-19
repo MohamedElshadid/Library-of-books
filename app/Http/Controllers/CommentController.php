@@ -47,7 +47,7 @@ class CommentController extends Controller
             'user_id' => Auth::id(),
             'book_id' => $book->id
         ]);
-        return redirect()->route('books.view', $book->id)->with('success', 'Your Comment has been added successfully..');
+        return redirect()->route('books.view', $book->id)->with('addSuccess', 'Your Comment has been added successfully..');
     }
 
     /**
@@ -92,6 +92,10 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Gate::authorize('delete-comment');
+        // Comment::find($id)->delete();
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect()->back()->with('deleteSuccess', 'Your Comment has been deleted successfully..');
     }
 }
