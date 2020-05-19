@@ -10,6 +10,12 @@
             {{ Session::get('success') }}
         </div>
     @endif
+
+    @if(Session::has('danger'))
+        <div class="alert alert-danger">
+            {{ Session::get('danger') }}
+        </div>
+    @endif
     
     <a class="text-light" style="font-size:20px"> Order By : </a>
     {{-- <label >order by : </label> --}}

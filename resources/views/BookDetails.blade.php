@@ -4,7 +4,19 @@
 <div class="overlay" style="height:1250px"></div>
 <div class="users" style="height:1250px">
     <div class="container" style="z-index:6;position:relative">
-        <div class="card" style="background-color:rgba(255, 255, 255, 0.7) !important;width:88% ">
+        {{--------- Flash Sessions -------}}
+        @if(Session::has('addSuccess'))
+            <div class="alert alert-success col-10 offset-1">
+                {{ Session::get('addSuccess') }}
+            </div>
+        @endif
+        @if(Session::has('deleteSuccess'))
+            <div class="alert alert-success col-10 offset-1">
+                {{ Session::get('deleteSuccess') }}
+            </div>
+        @endif
+        {{-------- End Flash Sessions -------}}
+        <div class="card col-10 offset-1" style="background-color:rgba(255, 255, 255, 0.7) !important;width:88% ">
             <div class="card-header row">
                 <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;top:0;" type="submit">
                     <i class="fa fa-heart" style="font-size: 31px; color: red;" aria-hidden="true"></i>
@@ -60,31 +72,55 @@
                         <button type="submit" class="rate btn" >Rate</button>   
                 </form>
                 
-               @endif
+                @endif
 
                     <h5 style="color:black;font-weight: bold;">Author: <strong class="text-primary" style="font-size:25px">{{$books->author}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Category: <strong class="text-primary" style="font-size:25px">{{$books->category->name}}</strong></h5>
                     <h5 style="color:black;font-weight: bold;">Price: <strong class="text-primary" style="font-size:25px">{{$books->price}}$</strong></h5> 
                     @if($books->available_copies !=0)
-                    <h6 style="color:black;font-weight: bold;"><strong>{{$books->available_copies}}</strong> Availble</h6>
+                    <h6 style="color:black;font-weight: bold;"><strong>{{$books->available_copies}}</strong> Available</h6>
                     @else
-                    <h6 style="color:black;font-weight: bold;">Not Availble</h6>
+                    <h6 style="color:black;font-weight: bold;">Not Available</h6>
                     @endif
                 </div>
             </div>
-            <form action="" method="">
-                <textarea style="width: 53%;height: 100px;position: relative;left:2%;resize:none" placeholder="Enter Your Comment"></textarea>
-                <input type="submit" class="btn btn-success btn-block" style="width: 53%;position: relative;left: 2%;font-weight: bold;" value="Add Your Comment"/>
-            </form>
-            <h1 class="h2" style="margin:20px">Comments</h1>
-            <div class="card" style="width: 96%;position: relative;left: 2%; margin-bottom:50px">
-                <div class="card-header">
-                    <h3>shadid</h3>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
+            {{--------------- Add Comments ----------------}}
+            <div class="container mt-2 mb-2">
+                @if (Auth::check())
+                    {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
+                    <div class="form-group">
+                        {!! Form::textarea('body', null, ['class'=>'form-control', 'placeholder'=>'Write your comment here...', 'rows'=>'5', 'style'=>'resize:none']) !!}
+                        @error('body')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    {{ Form::hidden('book_id', $books->id) }}
+                    {!! Form::submit('Add', ['class'=>'btn btn-info btn-block']) !!}
+                {{ Form::close() }}
+                @endif
+                {{----------- List Comments -----------}}
+                <h3 class="alert alert-success mt-2">Comments</h3>
+                @forelse ($comments as $comment)
+                    @if($comment->book_id == $books->id)
+                        <div class="card border-info mb-3">
+                            <div class="card-header h4 bg-warning">
+                                <span>{{ $comment->user->username }}</span>
+                                <span class="float-right">{{ $comment->created_at->format('d M , H:i:s') }}</span>
+                            </div>
+                            <div class="card-body h5">
+                                <p class="card-text">{{ $comment->body }}</p>
+                                @if($comment->user_id == Auth::id())
+                                    {!! Form::open(['route'=>['comments.destroy',$comment] , 'method'=>'delete' ]) !!}
+                                    {!! Form::submit("Delete", ["class"=>"btn btn-danger" , "onclick"=>"return confirm('Are you sure you want to delete this comment?')"]) !!}
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                @empty
+                    <p class="alert alert-danger">This Book has no comments yet !!</p>
+                @endforelse
+                {{------------- End of Comments --------------}}
+            </div>           
         </div>
         <div class="book" style="z-index:11">
             <div class="swiper-container">

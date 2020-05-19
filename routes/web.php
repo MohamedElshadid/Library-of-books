@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::middleware('admin')->group(function (){
     Route::get('chart-js','chartController@index');
     Route::get('relatedBooks','BookController@related_books');
@@ -68,12 +69,13 @@ Route::middleware('user')->group(function (){
     Route::get('/latest', 'UserHomeController@handleLatest')->name('sort.latest');
     Route::get('/rate', 'UserHomeController@handleRate')->name('sort.rate');
     Route::post('lease', 'DetailsController@savelease')->name('savelease');
-    Route::get('view/{id}', 'DetailsController@view')->name('books.view');
+    Route::get('book/{id}', 'DetailsController@view')->name('books.view');
     Route::post('book/{id}/rating', 'DetailsController@rating')->name('books.rating');
     
 
     Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
 
+    Route::resource('comments', 'CommentController');
 });
 

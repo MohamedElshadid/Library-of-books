@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Book;
 use App\Category;
 use App\Lease;
+use App\Comment;
 use App\Rate;
 
 use Carbon\Carbon;
@@ -175,14 +176,15 @@ class DetailsController extends Controller
     public function view($id){
         $book = Book::find($id);
         $category_id=Book::where('id','=',$id)->get("category_id")->first();
+        $comments = Comment::latest()->get();
         $relbooks=Book::where('category_id','=',$category_id["category_id"])->where('id','!=', $id)->get();
         $rate=Rate::where('user_id','=',Auth::user()->id)->where('book_id','=',$id)->first();
         if(!$rate)
         {
-            return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks,'rate'=>0]);
+            return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,'rate'=>0]);
 
         }
-        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks,'rate'=>$rate->rate]);
+        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,'rate'=>$rate->rate]);
 
 
     }
