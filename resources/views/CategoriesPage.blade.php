@@ -51,19 +51,21 @@
                                             <a href="{{ url('category/'.$category->id.'/')}}" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline">{{$category ->name}}</a> 
                                         </td>
                                         <td>
-                                            <a  class="btn btn-success" data-toggle="collapse" href="#collapseupdateform"role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
-                                            <div class="collapse" id="collapseupdateform">
+                                        <a  class="btn btn-success" data-toggle="collapse" href="#collapseupdateform{{$category->id}}"role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
+                                            <div class="collapse" id="collapseupdateform{{$category->id}}">
                                                 {!! Form::model($category,['route' =>['categories.update',$category],'method'=>'put','class'=>'form']) !!}
                                                     <div class="form-group" >   
                                                         {!! Form::text('name',NULL,['class'=>'form-check-input']) !!}
+                                                        <br>
                                                     </div>
+                                                    <div class="row">
                                                 {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
                                                 {!! Form::close() !!}
                                             </div>
                                                 {!! Form::open(['route' => ['categories.destroy',$category],'method'=>'delete','class'=>'form']) !!}
                                                 <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure?')"/>
                                                 {!! Form::close() !!}
-                                           
+                                            </div>
                                         </td>
                                     </tr>
                      

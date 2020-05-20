@@ -24,9 +24,9 @@ Route::middleware('admin')->group(function (){
     Route::get('relatedBooks','BookController@related_books');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/{id}', 'HomeController@destroy')->name('homeDestroy');
+    Route::get('/admin/book/{id}', 'HomeController@showBook')->name('showBook');
     Route::get('/CategoriesPage','CategoryController@index')->name('CategoriesPage');
 
-    //routes used in category & books  part (maryam)
     
     
     //category routes
@@ -61,9 +61,6 @@ Route::middleware('admin')->group(function (){
 
 });
 
-Route::post('addFav','FavouriteController@store');
-Route::get('removeFav/{id}','FavouriteController@destroy');
-Route::get('myFavourites', 'FavouriteController@index')->name('myFavourites');
 
 // URL::asset('path/to/asset');
 
@@ -86,5 +83,11 @@ Route::middleware('user')->group(function (){
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
 
     Route::resource('comments', 'CommentController');
+
+
+    Route::post('addFav','FavouriteController@store');
+    Route::get('removeFav/{id}','FavouriteController@destroy');
+    Route::get('myFavourites', 'FavouriteController@index')->name('myFavourites');
+
 });
 

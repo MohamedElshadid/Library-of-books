@@ -99,7 +99,7 @@
                 {{ Form::close() }}
                 @endif
                 {{----------- List Comments -----------}}
-                <h3 class="alert alert-success mt-2">Comments</h3>
+              
                 @forelse ($comments as $comment)
                     @if($comment->book_id == $books->id)
                         <div class="card border-info mb-3">

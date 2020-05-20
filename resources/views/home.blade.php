@@ -26,14 +26,16 @@
                             </div>
                                 
                             <div class="card-body">
+                                <div class="row">
+                                <a href="{{route('showBook', $book->id)}}" class="btn btn-info">View</a>
                                 <form  method="post">
                                     @csrf
-                                    {{-- <a href="{{route('', $book)}}" class="btn btn-info">View</a> --}}
 
                                     @method('delete')
 
                                         <a href="{{route('homeDestroy', $book->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
-                                    </form>
+                                </form>
+                                </div>
                             </div>
                             </div>
 

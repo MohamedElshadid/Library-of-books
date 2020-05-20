@@ -24,10 +24,7 @@
 
                             <img src="<?php echo asset('storage/'.$fav->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
                             <div class="d-flex justify-content-end align-items-center">
-                                    {{-- <small class="text-muted"> --}}
-                                        @component('components.rating')
-
-                                        @endcomponent
+                              
                                 </div>
                                 <h5> {{$fav->title}}</h5> 
                            <h5> Author : {{$fav->author}}</h5> 
