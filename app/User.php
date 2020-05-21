@@ -43,4 +43,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment');
     }
+      public function favorites()
+    {
+        return $this->belongsToMany('App\Book', 'favourites', 'user_id', 'book_id')->withTimestamps();
+    }
+    public function leases()
+    {
+        return $this->belongsToMany('App\Book', 'leases', 'user_id', 'book_id')->withPivot('expire_date', 'date', 'price');
+    }
 }

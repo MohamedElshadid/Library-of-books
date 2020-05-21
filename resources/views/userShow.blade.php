@@ -34,7 +34,7 @@
         @isset($catagory)
         <a class="list-group-item list-group-item-action active" style="background-color: #2d995b !important;font-size:20px" href="">All Categories</a>
         @foreach ($catagory as $item)
-        <a class="list-group-item list-group-item-action" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline" target="_blank" href="{{ url('cat/'.$item->id.'/' )}}"> {{$item->name}}</a>
+        <a class="list-group-item list-group-item-action" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline" href="{{ url('category/'.$item->id.'/' )}}"> {{$item->name}}</a>
         @endforeach
         @endisset
 

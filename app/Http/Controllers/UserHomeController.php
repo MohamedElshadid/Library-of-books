@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Book;
 use \App\Rate;
 use \App\Category;
+use Auth;
 
 class UserHomeController extends Controller
 {
@@ -42,5 +43,18 @@ class UserHomeController extends Controller
             
         }
         
+    }
+    function handleCategory($category)
+    {        
+            $catagory = Category::all();
+            $books = Book::where("category_id", $category)->simplePaginate(4);
+            return view("userShow", ["books" => $books, "catagory" => $catagory]);
+
+    }
+    function mybooks()
+    {        
+        //dd(Auth::user()->leases);
+        return view('mybook', ['books' => Auth::user()->leases]);
+
     }
 }

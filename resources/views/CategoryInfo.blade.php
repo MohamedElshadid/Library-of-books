@@ -7,7 +7,6 @@
     <table class="table table-bordered table-info" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6">
         <thead class="thead-dark">
             <tr>
-            <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
             <th scope="col">Price</th>
@@ -20,20 +19,17 @@
         <tbody>
         @foreach ($books as $book)
             <tr>
-            <td>{{$book->id}}</td>
             <td>{{$book->title}}</td>
             <td>{{$book->author}}</td>
             <td>{{$book->price}}</td>
             <td>{{$book->available_copies}}</td>
             <td>
-         
-
             <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100px;height:100px;border:2px solid black ;" />
             </td>
          <td>
-         <a class="btn btn-info"data-toggle="collapse" href="#collapseupdateform" role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
+         <a class="btn btn-info"data-toggle="collapse" href="#collapseupdateform{{$book->id}}" role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
                 
-         <div class="collapse" id="collapseupdateform">
+         <div class="collapse" id="collapseupdateform{{$book->id}}">
                                              
                                              {!! Form::model($book,['route' =>['updateBook',$book->id],'method'=>'put','class'=>'form','files'=> true ])  !!}
                                                  <div class="form-group" >   
@@ -41,6 +37,7 @@
                                                      <br/> {!! Form::text('author',NULL,['class'=>'form-check-input']) !!}
                                                      <br/>  {!! Form::number('price',NULL,['class'=>'form-check-input']) !!}
                                                      <br/>   {!! Form::number('available_copies',NULL,['class'=>'form-check-input']) !!}
+                                                     <br>
                                                      <br/>   {!! Form::file('cover',['required' => 'required']) !!}
 
                                                  </div>
@@ -49,7 +46,7 @@
                                          </div>
          </td>
 
-<td>
+            <td>
             <form action="" method="post">
             @csrf
             @method('delete')

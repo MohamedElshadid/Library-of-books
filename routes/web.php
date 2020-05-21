@@ -24,9 +24,9 @@ Route::middleware('admin')->group(function (){
     Route::get('relatedBooks','BookController@related_books');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/{id}', 'HomeController@destroy')->name('homeDestroy');
+    Route::get('/admin/book/{id}', 'HomeController@showBook')->name('showBook');
     Route::get('/CategoriesPage','CategoryController@index')->name('CategoriesPage');
 
-    //routes used in category & books  part (maryam)
     
     
     //category routes
@@ -61,19 +61,16 @@ Route::middleware('admin')->group(function (){
 
 });
 
-Route::post('addFav','FavouriteController@store');
-Route::get('removeFav/{id}','FavouriteController@destroy');
-Route::get('myFavourites', 'FavouriteController@index')->name('myFavourites');
 
 // URL::asset('path/to/asset');
 
 Route::middleware('user')->group(function (){ 
     Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
-    Route::get('/search', 'DetailsController@handleSearch')->name('search');
     Route::get('lease/{id}', 'DetailsController@lease')->name('books.lease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
 
-    Route::get('cat/{id}', 'DetailsController@CategoryBooks');
+    Route::get('category/{id}', 'UserHomeController@handleCategory');
+    Route::get('mybook', 'UserHomeController@mybooks')->name('mybook');
     Route::get('/search', 'UserHomeController@handleSearch')->name('search');
     Route::get('/latest', 'UserHomeController@handleLatest')->name('sort.latest');
     Route::get('/rate', 'UserHomeController@handleRate')->name('sort.rate');
@@ -86,5 +83,11 @@ Route::middleware('user')->group(function (){
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
 
     Route::resource('comments', 'CommentController');
+
+
+    Route::post('addFav','FavouriteController@store');
+    Route::get('removeFav/{id}','FavouriteController@destroy');
+    Route::get('myFavourites', 'FavouriteController@index')->name('myFavourites');
+
 });
 
