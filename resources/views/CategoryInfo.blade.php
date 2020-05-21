@@ -33,15 +33,15 @@
                                              
                                              {!! Form::model($book,['route' =>['updateBook',$book->id],'method'=>'put','class'=>'form','files'=> true ])  !!}
                                                  <div class="form-group" >   
-                                                     <br/>{!! Form::text('title',NULL,['class'=>'form-check-input']) !!}
-                                                     <br/> {!! Form::text('author',NULL,['class'=>'form-check-input']) !!}
-                                                     <br/>  {!! Form::number('price',NULL,['class'=>'form-check-input']) !!}
-                                                     <br/>   {!! Form::number('available_copies',NULL,['class'=>'form-check-input']) !!}
-                                                     <br>
+                                                     {!! Form::text('title',NULL,['class'=>'form-control']) !!}
+                                                      {!! Form::text('author',NULL,['class'=>'form-control']) !!}
+                                                      {!! Form::number('price',NULL,['class'=>'form-control']) !!}
+                                                      {!! Form::number('available_copies',NULL,['class'=>'form-control']) !!}
+                                                     
                                                      <br/>   {!! Form::file('cover',['required' => 'required']) !!}
 
                                                  </div>
-                                                 <br/>{!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
+                                                 {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
                                              {!! Form::close() !!}
                                          </div>
          </td>

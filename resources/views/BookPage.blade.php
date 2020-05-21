@@ -1,4 +1,4 @@
-@extends('layouts.userNavbar')
+@extends('layouts.app')
 @section('content')
 
 <div class="overlay" style="height:1250px"></div>
@@ -39,31 +39,29 @@
                 </div>
             </div>
                 {{----------- List Comments -----------}}
-                <h3 class="alert alert-primary mt-2">Comments</h3>
-                @forelse ($comments as $comment)
-                    @if($comment->book_id == $books->id)
+
+                    @foreach ($comments as $comment)
+                        @if($comment->book_id == $books->id)
                         <div class="card border-info mb-3">
                             <div class="card-header h4 bg-info">
+                                <span><img src="<?php echo asset('upload/'.$comment->user->image)?>" style="width:50px;height:50px;border-radius:50% ;" /></span>
                                 <span>{{ $comment->user->username }}</span>
                                 <span class="float-right">{{ $comment->created_at->format('d M , H:i:s') }}</span>
                             </div>
                             <div class="card-body h5">
                                 <p class="card-text">{{ $comment->body }}</p>
-                                @if($comment->user_id == Auth::id())
-                                    {!! Form::open(['route'=>['comments.destroy',$comment] , 'method'=>'delete' ]) !!}
-                                    {!! Form::submit("Delete", ["class"=>"btn btn-danger" , "onclick"=>"return confirm('Are you sure you want to delete this comment?')"]) !!}
-                                @endif
                             </div>
                         </div>
-                    @endif
-                @empty
-                    <p class="alert alert-danger">This Book has no comments yet !!</p>
-                @endforelse
-                {{------------- End of Comments --------------}}
-                <a href="{{route('home')}}" class="btn btn-success">Back To All Books..</a>
-<br>
-            </div>       
+                        @else
+                        <p class="alert alert-danger">This Book has no comments yet !!</p>
     
+                        @endif
+                    @endforeach
+                            {{------------- End of Comments --------------}}
+                <a href="{{route('home')}}" class="btn btn-success">Back To All Books..</a>
+            <br>
+            </div>       
+          
         </div>
        
     </div>
