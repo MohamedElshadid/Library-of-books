@@ -23,19 +23,13 @@
                             <div> 
 
                             <img src="<?php echo asset('storage/'.$fav->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
-                            <div class="d-flex justify-content-end align-items-center">
-                                    {{-- <small class="text-muted"> --}}
-                                        @component('components.rating')
-
-                                        @endcomponent
-                                </div>
                                 <h5> {{$fav->title}}</h5> 
-                           <h5> Author : {{$fav->author}}</h5> 
-                           <h5>Price : {{$fav->price}} </h5>
-                           @if($fav->available_copies !=0)
-                                <h6>{{$fav->available_copies}} Availble</h6>
+                            <h5> Author : {{$fav->author}}</h5> 
+                            <h5>Price : {{$fav->price}} </h5>
+                            @if($fav->available_copies !=0)
+                                <h6>{{$fav->available_copies}} Available</h6>
                                 @else
-                                <h6>Not Availble</h6>
+                                <h6>Not Available</h6>
                                 @endif
                                 <div class="card-body">
 
@@ -43,7 +37,7 @@
                                 @if($fav->available_copies !=0)
                                     <form action="lease/{{$fav->book_id}}" method="post">
                                         @csrf
-                                        <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$fav->book_id}}">lease</button>
+                                        <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$fav->book_id}}">Lease</button>
                                         <div class="collapse" id="demo{{$fav->book_id}}" class="row">
                                             <input name="days" placeholder="Enter number of days"  required/>
                                             <input class="btn btn-info" value="save"  type="submit"/>
