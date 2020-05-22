@@ -22,7 +22,7 @@ class FavouriteController extends Controller
         ->join('favourites','favourites.book_id','=', 'books.id' )
         ->where('favourites.user_id','=',Auth::id())
         ->get();
-      
+        
         return view('FavouritesPage',['favourites'=>$favourites]);
     }
 
