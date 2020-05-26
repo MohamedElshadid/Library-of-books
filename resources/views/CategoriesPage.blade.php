@@ -71,6 +71,7 @@
                      
                               
                                 @endforeach
+                                <a href="category/{{$category->id}}">{{$category ->name}}</a> 
                    
                             </tbody>
                         </table>
