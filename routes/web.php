@@ -32,8 +32,7 @@ Route::middleware('admin')->group(function (){
     //category routes
     Route::resource('categories', 'CategoryController');
     //list books in specific category 
-    Route::get('category/{id}','BookController@index');
-
+    Route::get('addbook/{id}','BookController@index');
     //store book info in category 
     
     Route::post('store','BookController@store');

@@ -62,7 +62,6 @@
 </table> 
 @else
 <h2 class="alert alert-primary text-center" style="width:50%;margin:10px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> There is no Books!!</h2>
-
 @endif
 
 @if ($errors->any())
@@ -74,6 +73,7 @@
         </ul>
     </div>
 @endif 
+
 <div class="card" style="font-weight:bold;margin:10px auto;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6;width:30%">
     <div class="card-header">
             add book to category
