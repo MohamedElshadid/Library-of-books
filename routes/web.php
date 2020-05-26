@@ -66,11 +66,11 @@ Route::middleware('admin')->group(function (){
 
 Route::middleware('user')->group(function (){ 
     Route::get('/userDashbord', 'DetailsController@userIndex')->name('userHome');
-    Route::get('/search', 'DetailsController@handleSearch')->name('search');
     Route::get('lease/{id}', 'DetailsController@lease')->name('books.lease');
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
 
-    Route::get('cat/{id}', 'DetailsController@CategoryBooks');
+    Route::get('category/{id}', 'UserHomeController@handleCategory');
+    Route::get('mybook', 'UserHomeController@mybooks')->name('mybook');
     Route::get('/search', 'UserHomeController@handleSearch')->name('search');
     Route::get('/latest', 'UserHomeController@handleLatest')->name('sort.latest');
     Route::get('/rate', 'UserHomeController@handleRate')->name('sort.rate');

@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     <li class="navbar-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{route('mybook')}}">
                             {{ "My Books" }}
                         </a>
                     </li>
