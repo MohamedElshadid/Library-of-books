@@ -83,6 +83,8 @@
                             </div>
                             <!-- heart shape button  -->
                             <!-- <div class="heart-shape"> -->
+                                <!-- Default switch -->
+
                             <form action="{{ action('FavouriteController@store') }}" method="post">
                             {{csrf_field()}}
                                 <input type="submit" value="add to favourites" class="btn btn-success"> 
