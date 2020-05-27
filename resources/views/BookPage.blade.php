@@ -40,9 +40,9 @@
             </div>
                 {{----------- List Comments -----------}}
 
-                    @foreach ($comments as $comment)
+                    @forelse ($comments as $comment)
                         @if($comment->book_id == $books->id)
-                        <div class="card border-info mb-3">
+                        <div class="card border-info mb-2 mt-2">
                             <div class="card-header h4 bg-info">
                                 <span><img src="<?php echo asset('upload/'.$comment->user->image)?>" style="width:50px;height:50px;border-radius:50% ;" /></span>
                                 <span>{{ $comment->user->username }}</span>
@@ -52,11 +52,11 @@
                                 <p class="card-text">{{ $comment->body }}</p>
                             </div>
                         </div>
-                        @else
-                        <p class="alert alert-danger">This Book has no comments yet !!</p>
-    
+                        
                         @endif
-                    @endforeach
+		    @empty
+                        <p class="alert alert-danger">This Book has no comments yet !!</p>
+                    @endforelse
                             {{------------- End of Comments --------------}}
                 <a href="{{route('home')}}" class="btn btn-success">Back To All Books..</a>
             <br>

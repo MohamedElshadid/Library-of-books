@@ -102,7 +102,7 @@
               
                 @forelse ($comments as $comment)
                     @if($comment->book_id == $books->id)
-                        <div class="card border-info mb-3">
+                        <div class="card border-info mb-2 mt-2">
                             <div class="card-header h4 bg-warning">
                                 <span>{{ $comment->user->username }}</span>
                                 <span class="float-right">{{ $comment->created_at->format('d M , H:i:s') }}</span>
