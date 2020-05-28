@@ -1,6 +1,7 @@
 
 @extends('layouts.userNavbar')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="overlay"></div>
 <div class="users">
@@ -32,9 +33,9 @@
 <div class="d-flex py-5 " style="position:relative;z-index:8">
     <div class="list-group" style="width:18%">
         @isset($catagory)
-        <a class="list-group-item list-group-item-action active" style="background-color: #2d995b !important;font-size:20px" href="">All Categories</a>
+        <a class="list-group-item list-group-item-action" style="font-size:20px" href="{{route("all")}}">All Categories</a>
         @foreach ($catagory as $item)
-        <a class="list-group-item list-group-item-action" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline" href="{{ url('category/'.$item->id.'/' )}}"> {{$item->name}}</a>
+        <a class="list-group-item list-group-item-action"  style="color:black;font-weight:bold;font-size:20px;" href="{{ url('category/'.$item->id.'/' )}}"> {{$item->name}}</a>
         @endforeach
         @endisset
 
@@ -81,25 +82,15 @@
                                 @endif
                              
                             </div>
-                            <!-- heart shape button  -->
-                            <!-- <div class="heart-shape"> -->
-                            <form action="{{ action('FavouriteController@store') }}" method="post">
-                            {{csrf_field()}}
-                                <input type="submit" value="add to favourites" class="btn btn-success"> 
-                               
-                                <input type="hidden" id="bookID" name="bookID" value="{{$book->id}}">
-                             </form>
-                             
-                             <form action="" method="get">
-                            {{csrf_field()}}
-                            
-                            @method('delete')
-                            <a href="removeFav/{{$book->id}}" class="btn btn-danger">Delete</a>                              
-                                <input type="hidden" id="bookID" name="bookID" value="{{$book->id}}" >
-                             </form>
+                             <div >
+                                @if(in_array($book->id,$fav))
+                                    <i class="fa fa-heart btn like" style="color:red ;width:20px;font-size:30px;" data-target="{{$book->id}}"></i>
                                 
-
-                            <!-- </div> -->
+                                @else
+                                    <i class="fa fa-heart-o btn like" style="color:red ;width:20px;font-size:30px;" data-target="{{$book->id}}"></i>
+                                
+                                @endif
+                            </div>
                          
                             </div>
                            

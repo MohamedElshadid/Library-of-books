@@ -32,14 +32,13 @@ Route::middleware('admin')->group(function (){
     //category routes
     Route::resource('categories', 'CategoryController');
     //list books in specific category 
-    Route::get('category/{id}','BookController@index');
-
+    Route::get('addbook/{id}','BookController@index');
     //store book info in category 
     
     Route::post('store','BookController@store');
     Route::put('updateBook/{id}','BookController@update')->name('updateBook');
     //delete book from category
-    Route::get('category/bookDestroy/{id}','BookController@destroy');
+    Route::POST('category/bookDestroy/{id}','BookController@destroy');
     ###################################################
     // Route::resource('users', 'UserController');
     Route::get('users/{user}/editAdmin', 'UserController@editAdmin')->name('users.editAdmin');
@@ -70,6 +69,7 @@ Route::middleware('user')->group(function (){
     Route::get('view/{id}', 'DetailsController@view')->name('books.view');
 
     Route::get('category/{id}', 'UserHomeController@handleCategory');
+    Route::get('category', 'UserHomeController@allCategory')->name('all');
     Route::get('mybook', 'UserHomeController@mybooks')->name('mybook');
     Route::get('/search', 'UserHomeController@handleSearch')->name('search');
     Route::get('/latest', 'UserHomeController@handleLatest')->name('sort.latest');
@@ -77,7 +77,7 @@ Route::middleware('user')->group(function (){
     Route::post('lease', 'DetailsController@savelease')->name('savelease');
     Route::get('book/{id}', 'DetailsController@view')->name('books.view');
     Route::post('book/{id}/rating', 'DetailsController@rating')->name('books.rating');
-    
+    // Route::get('comments/{id}','CommentController@destroy');
 
     Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
@@ -85,8 +85,7 @@ Route::middleware('user')->group(function (){
     Route::resource('comments', 'CommentController');
 
 
-    Route::post('addFav','FavouriteController@store');
-    Route::get('removeFav/{id}','FavouriteController@destroy');
+    Route::get('addFav','FavouriteController@storeOrUpdate');
     Route::get('myFavourites', 'FavouriteController@index')->name('myFavourites');
 
 });

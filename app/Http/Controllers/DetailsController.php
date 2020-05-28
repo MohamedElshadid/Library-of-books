@@ -99,6 +99,8 @@ class DetailsController extends Controller
     {
         $books=\App\Book::simplePaginate(4);
         $catagory = \App\Category::all();
+        $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
+        //dd($fav);
         $data = Lease::all();
         foreach($data as $obj){
             if ($obj->expire_date == Carbon::today()->toDateString()){
@@ -108,7 +110,7 @@ class DetailsController extends Controller
             }
         }
         
-        return view("userShow", ['books'=>$books, "catagory" => $catagory]);
+        return view("userShow", ['books'=>$books, "catagory" => $catagory,"fav"=>$fav]);
     }
 
 

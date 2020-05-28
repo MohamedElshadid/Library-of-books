@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/swiper.min.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -100,7 +102,6 @@
             @yield('content')
         </main>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+
 </body>
 </html>

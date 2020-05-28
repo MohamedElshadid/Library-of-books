@@ -48,7 +48,7 @@
                                     <tr>
                                 
                                         <td>
-                                            <a href="{{ url('category/'.$category->id.'/')}}" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline">{{$category ->name}}</a> 
+                                            <a href="{{ url('addbook/'.$category->id)}}" style="color:black;font-weight:bold;font-size:20px;text-decoration:underline">{{$category ->name}}</a> 
                                         </td>
                                         <td>
                                         <a  class="btn btn-success" data-toggle="collapse" href="#collapseupdateform{{$category->id}}"role="button" aria-expanded="false" aria-controls="collapseupdateform">Update</a>
@@ -70,9 +70,7 @@
                                     </tr>
                      
                               
-                                @endforeach
-                                <a href="category/{{$category->id}}">{{$category ->name}}</a> 
-                   
+                                @endforeach                   
                             </tbody>
                         </table>
                  

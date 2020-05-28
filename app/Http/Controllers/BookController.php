@@ -113,6 +113,7 @@ class BookController extends Controller
     {
         //delete book from db 
         $book =Book::find($id);
+        
         $book->delete();
         return redirect ('/category/'.$book->category_id);
     }

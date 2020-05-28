@@ -1,6 +1,7 @@
 
 @extends('layouts.userNavbar')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="users">
 <nav style="position:relative;z-index:8">
@@ -21,7 +22,6 @@
             <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
                             <div class="card-header">      
                             <div> 
-
                             <img src="<?php echo asset('storage/'.$fav->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
                                 <h5> {{$fav->title}}</h5> 
                            <h5> Author : {{$fav->author}}</h5> 
@@ -52,13 +52,15 @@
                              
                                 </div><!-- class card-body-->
                                 <div class="card-footer">
-                                <form action="" method="get">
-                                    {{csrf_field()}}
-                                    
-                                    @method('delete')
-                                    <a href="removeFav/{{$fav->book_id}}" class="btn btn-danger">Delete</a>                              
-                                    <input type="hidden" id="bookID" name="bookID" value="{{$fav->book_id}}" >
-                             </form>
+                                <div >
+                                @if(in_array($fav->book_id,$favs))
+                                    <i class="fa fa-heart btn like" style="color:red ;width:20px;font-size:30px;" data-target="{{$fav->book_id}}"></i>
+                                
+                                @else
+                                    <i class="fa fa-heart-o btn like" style="color:red ;width:20px;font-size:30px;" data-target="{{$fav->book_id}}"></i>
+                                
+                                @endif
+                            </div>
                             </div>
                           
                             </div>                     

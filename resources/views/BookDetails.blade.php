@@ -20,7 +20,7 @@
             <div class="card-header row">
                 <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;top:0;" type="submit">
                     <i class="fa fa-heart" style="font-size: 31px; color: red;" aria-hidden="true"></i>
-                </button>                    
+                </button>           
                 <div class="col-md-4">
                     <img src="<?php echo asset('storage/'.$books->cover)?>" style="width:280px;height:220px;border:2px solid black ;" >
                 </div>

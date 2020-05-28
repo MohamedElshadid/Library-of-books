@@ -3,6 +3,7 @@
 @section('content')
 <div class="overlay"></div>
     <div class="users">
+    @if(count($books)>0)
     <table class="table table-bordered table-info" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6">
         <thead class="thead-dark">
             <tr>
@@ -59,6 +60,9 @@
          
         </tbody>
 </table> 
+@else
+<h2 class="alert alert-primary text-center" style="width:50%;margin:10px auto;background-color:rgba(255, 255, 255, 0.7) !important;"> There is no Books!!</h2>
+@endif
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -69,6 +73,7 @@
         </ul>
     </div>
 @endif 
+
 <div class="card" style="font-weight:bold;margin:10px auto;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6;width:30%">
     <div class="card-header">
             add book to category

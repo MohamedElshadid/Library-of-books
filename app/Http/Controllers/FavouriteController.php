@@ -22,8 +22,10 @@ class FavouriteController extends Controller
         ->join('favourites','favourites.book_id','=', 'books.id' )
         ->where('favourites.user_id','=',Auth::id())
         ->get();
+        $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
+
         
-        return view('FavouritesPage',['favourites'=>$favourites]);
+        return view('FavouritesPage',['favourites'=>$favourites,"favs"=>$fav]);
     }
 
     /**
@@ -52,6 +54,12 @@ class FavouriteController extends Controller
         
     //redirect
     return redirect()->route('home');
+    }
+    public function storeOrUpdate(Request $request)
+    {
+        // dd($request->all());
+        \App\User::find(Auth::id())->favorites()->toggle($request->bookID);
+        return redirect()->back();
     }
 
     

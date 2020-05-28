@@ -28,6 +28,7 @@
                             <div class="card-body">
                                 <div class="row">
                                 <a href="{{route('showBook', $book->id)}}" class="btn btn-info">View</a>
+                                <!-- <button class="deleteRecord btn btn-danger" data-id="{{ $book->id }}" >Delete</button> -->
                                 <form  method="post">
                                     @csrf
 
