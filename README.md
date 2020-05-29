@@ -44,7 +44,7 @@
 - User can show related books
 - User can edit his profile
 
-###############################
+
 
 ### -Authentication Images
 ![](public/upload/Register.png)
@@ -53,7 +53,6 @@
 ![](public/upload/reset.png)
 
 
-###############################
 
 
 ### -Admin Images
@@ -66,7 +65,6 @@
 ![](public/upload/Chart.png)
 
 
-###############################
 
 
 ### -User Images
