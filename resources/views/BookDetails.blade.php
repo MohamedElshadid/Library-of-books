@@ -109,11 +109,11 @@
                             </div>
                             <div class="card-body h5">
                                 <p class="card-text">{{ $comment->body }}</p>
+                                @if($comment->user_id == Auth::id())
                                 <a href="{{ route('comment.destroy',$comment->id) }}" class="btn btn-sm btn-outline-danger py-0" style="font-size: 23px;" id="deleteComment" data-id="{{ $comment->id }}">
                                     Delete
                                 </a>
-                                <!-- <button class="btn btn-danger " onClick="deleteRecord({{$comment->id}})">Delete</button> -->
-                                <!-- <button class="btn btn-danger delete" data-id="{{$comment->id}}">Delete</button> -->
+                                @endif
                             </div>
                         </div>
                     @endif
