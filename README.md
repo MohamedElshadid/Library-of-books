@@ -47,34 +47,34 @@
 
 
 ### -Authentication Images
-![](public/upload/Register.png)
-![](public/upload/confirm.png)
-![](public/upload/Login.png)
-![](public/upload/reset.png)
+![](public/upload/Register.png) <br/>
+![](public/upload/confirm.png) <br/>
+![](public/upload/Login.png) <br/>
+![](public/upload/reset.png) <br/>
 
 
 
 
 ### -Admin Images
-![](public/upload/category.png)
-![](public/upload/Books.png)
-![](public/upload/Alluser.png)
-![](public/upload/Alladmin.png)
-![](public/upload/adminbook.png)
-![](public/upload/Disable.png)
-![](public/upload/Chart.png)
+![](public/upload/category.png) <br/>
+![](public/upload/Books.png) <br/>
+![](public/upload/Alluser.png) <br/>
+![](public/upload/Alladmin.png) <br/>
+![](public/upload/adminbook.png) <br/>
+![](public/upload/Disable.png) <br/>
+![](public/upload/Chart.png) <br/>
 
 
 
 
 ### -User Images
-![](public/upload/UserShow.png)
-![](public/upload/myfav.png)
-![](public/upload/bookView.png)
-![](public/upload/comment.png)
-![](public/upload/rate.png)
-![](public/upload/relatedbook.png)
-![](public/upload/edit.png)
+![](public/upload/UserShow.png) <br/>
+![](public/upload/myfav.png) <br/>
+![](public/upload/bookView.png) <br/>
+![](public/upload/comment.png) <br/>
+![](public/upload/rate.png) <br/>
+![](public/upload/relatedbook.png) <br/>
+![](public/upload/edit.png) <br/>
 
 
 
