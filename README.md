@@ -11,5 +11,5 @@
 </pre>
 
 ### -Project Images
-![](assets/uppload/Login.jpg)
-![](assets/upload/Register.jpg)
+![](uppload/Login.jpg)
+![](upload/Register.jpg)
