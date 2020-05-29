@@ -65,22 +65,57 @@ $(".deleteRecord").click(function(){
     });
    
 });
-$(".delete").click(function(){
-    var id = $(this).data("id");
-    var token = $("meta[name='csrf-token']").attr("content");
-   
-    $.ajax(
-    {
-        url: "/comments/"+id,
-        type: 'DELETE',
-        data: {
-            "id": id,
-            "_token": token,
-        },
-        success: function (){
-            console.log("it Works");
-        }
-    });
-   
-});
+$(document).ready(function () {
 
+    $("body").on("click","#deleteComment",function(e){
+   
+       e.preventDefault();
+       var id = $(this).data("id");
+       var $ele = $(this).parent().parent();
+       var token = $("meta[name='csrf-token']").attr("content");
+       var url = e.target;
+   
+       $.ajax(
+           {
+             url: url.href, //or you can use url: "company/"+id,
+             type: 'GET',
+             data: {
+               _token: token,
+                   id: id
+           },
+           success: function (response){
+            $ele.fadeOut().remove();
+           }
+        });
+         return false;
+      });
+       
+   
+   });
+   $(document).ready(function () {
+
+    $("body").on("click","#deleteBook",function(e){
+   
+       e.preventDefault();
+       var id = $(this).data("id");
+       var $ele = $(this).parent().parent().parent().parent();
+       var token = $("meta[name='csrf-token']").attr("content");
+       var url = e.target;
+   
+       $.ajax(
+           {
+             url: url.href, //or you can use url: "company/"+id,
+             type: 'GET',
+             data: {
+               _token: token,
+                   id: id
+           },
+           success: function (response){
+            $ele.fadeOut().remove();
+           }
+        });
+         return false;
+      });
+       
+   
+   });

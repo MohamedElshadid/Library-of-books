@@ -28,14 +28,10 @@
                             <div class="card-body">
                                 <div class="row">
                                 <a href="{{route('showBook', $book->id)}}" class="btn btn-info">View</a>
-                                <!-- <button class="deleteRecord btn btn-danger" data-id="{{ $book->id }}" >Delete</button> -->
-                                <form  method="post">
-                                    @csrf
+                                <a href="{{ route('homeDestroy',$book->id) }}" class="btn btn-sm btn-outline-danger py-0 ml-1" style="font-size: 23px;" id="deleteBook" data-id="{{ $book->id }}">
+                                    Delete
+                                </a>
 
-                                    @method('delete')
-
-                                        <a href="{{route('homeDestroy', $book->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
-                                </form>
                                 </div>
                             </div>
                             </div>

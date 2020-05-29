@@ -5,6 +5,8 @@ use App\Comment;
 use App\Book;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use DB;
+
 
 class CommentController extends Controller
 {

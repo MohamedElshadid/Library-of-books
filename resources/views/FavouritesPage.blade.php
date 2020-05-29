@@ -65,15 +65,15 @@
                           
                             </div>                     
            
-            </div><!-- class card-header -->
-            </div><!-- class card-->
-        </div><!-- div class col-md-3 mt-2 -->
+            </div>
+            </div>
+        </div>
         @empty
                 <h1>No Books</h1>
             @endforelse
-            </div><!-- row-->
+            </div>
             
-            </div><!-- container-->
-            </div><!-- class d-flex py-5-->
-</div><!-- div class users  -->
+            </div>
+            </div>
+</div>
 @endsection

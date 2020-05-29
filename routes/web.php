@@ -77,7 +77,7 @@ Route::middleware('user')->group(function (){
     Route::post('lease', 'DetailsController@savelease')->name('savelease');
     Route::get('book/{id}', 'DetailsController@view')->name('books.view');
     Route::post('book/{id}/rating', 'DetailsController@rating')->name('books.rating');
-    // Route::get('comments/{id}','CommentController@destroy');
+    Route::get('comments/{id}','CommentController@destroy')->name('comment.destroy');
 
     Route::get('users/{user}/editUser', 'UserController@editUser')->name('users.editUser');
     Route::patch('users/{user}/updateUser', 'UserController@updateUser')->name('users.updateUser');
