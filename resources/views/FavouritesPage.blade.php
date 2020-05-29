@@ -35,7 +35,7 @@
 
                                 <a href="{{route('books.view', $fav->book_id)}}" class="btn btn-dark">View</a>
                                 @if($fav->available_copies !=0)
-                                    <form action="lease/{{$fav->book_id}}" method="post">
+                                    <form action="lease/{{$fav->book_id}}" method="post" style="display:inline">
                                         @csrf
                                         <button data-toggle="collapse" class="btn btn-info" data-target="#demo{{$fav->book_id}}">Lease</button>
                                         <div class="collapse" id="demo{{$fav->book_id}}" class="row">

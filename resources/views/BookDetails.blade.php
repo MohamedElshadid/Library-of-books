@@ -18,9 +18,13 @@
         {{-------- End Flash Sessions -------}}
         <div class="card col-10 offset-1" style="background-color:rgba(255, 255, 255, 0.7) !important;width:88% ">
             <div class="card-header row">
-                <button style="background-color: transparent; border: transparent;outline:none;position: absolute;left: 85%;top:0;" type="submit">
-                    <i class="fa fa-heart" style="font-size: 31px; color: red;" aria-hidden="true"></i>
-                </button>           
+                @if(in_array($books->id,$fav))
+                    <i class="fa fa-heart btn like" style="color:red;width:50px;z-index:55 ;font-size:30px;position: absolute;left: 87%;" data-target="{{$books->id}}"></i>
+                
+                @else
+                    <i class="fa fa-heart-o btn like" style="color:red;width:50px;z-index:55 ;font-size:30px;position: absolute;left: 87%;" data-target="{{$books->id}}"></i>
+                
+                @endif         
                 <div class="col-md-4">
                     <img src="<?php echo asset('storage/'.$books->cover)?>" style="width:280px;height:220px;border:2px solid black ;" >
                 </div>

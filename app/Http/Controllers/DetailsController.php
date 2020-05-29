@@ -181,12 +181,13 @@ class DetailsController extends Controller
         $comments = Comment::latest()->get();
         $relbooks=Book::where('category_id','=',$category_id["category_id"])->where('id','!=', $id)->get();
         $rate=Rate::where('user_id','=',Auth::user()->id)->where('book_id','=',$id)->first();
+        $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
         if(!$rate)
         {
-            return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,'rate'=>0]);
+            return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,"fav"=>$fav,'rate'=>0]);
 
         }
-        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,'rate'=>$rate->rate]);
+        return view('BookDetails',['books'=>$book ,'relbooks'=>$relbooks, 'comments'=>$comments,'rate'=>$rate->rate,"fav"=>$fav]);
 
 
     }
