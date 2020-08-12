@@ -39,7 +39,7 @@
       </div>
     <div class="container">
         
-        <div class="row">
+        <div class="row justify-content-md-center">
 
             @forelse ($books as $book)
             <div class="col-md-4 col-lg-3 mt-2">

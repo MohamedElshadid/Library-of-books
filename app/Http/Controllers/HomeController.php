@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         // $books=\App\Book::all();
-        $books=\App\Book::simplePaginate(4);
+        $books=\App\Book::simplePaginate(3);
        
 
         return view('home',['books'=>$books]);

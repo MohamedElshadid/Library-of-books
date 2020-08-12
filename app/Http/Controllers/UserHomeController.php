@@ -16,12 +16,12 @@ class UserHomeController extends Controller
         $userSearch = $request->search;
         if($userSearch !=''){
             $catagory = Category::all();
-            $books = Book::where("title", "like", "$userSearch")->orWhere("author", "like", "$userSearch")->simplePaginate(4);
+            $books = Book::where("title", "like", "$userSearch")->orWhere("author", "like", "$userSearch")->simplePaginate(3);
             $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
 
             return view("userShow", ["books" => $books, "catagory" => $catagory,"fav"=>$fav]);
         } else {
-            $books=Book::simplePaginate(4);
+            $books=Book::simplePaginate(3);
             $catagory = Category::all();
             $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
             return view("userShow", ["books" => $books, "catagory" => $catagory,"fav"=>$fav]);
@@ -31,7 +31,7 @@ class UserHomeController extends Controller
     }
     function handleLatest() {
         $catagory = Category::all();
-        $books = Book::orderBy('created_at', 'DESC')->simplePaginate(4);
+        $books = Book::orderBy('created_at', 'DESC')->simplePaginate(3);
         $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
         return view("userShow", ["books" => $books, "catagory" => $catagory,"fav"=>$fav]);
         }
@@ -51,19 +51,19 @@ class UserHomeController extends Controller
     function handleCategory($category)
     {        
             $catagory = Category::all();
-            $books = Book::where("category_id", $category)->simplePaginate(4);
+            $books = Book::where("category_id", $category)->simplePaginate(3);
             $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
             return view("userShow", ["books" => $books, "catagory" => $catagory,"fav"=>$fav]);    }
     function allCategory()
     {        
             $catagory = Category::all();
-            $books = Book::simplePaginate(4);
+            $books = Book::simplePaginate(3);
             $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
             return view("userShow", ["books" => $books, "catagory" => $catagory,"fav"=>$fav]);    }
     function mybooks()
     {        
         //dd(Auth::user()->leases);
-        $books = Auth::user()->leases()->simplePaginate(4);
+        $books = Auth::user()->leases()->simplePaginate(3);
         return view('mybook', ['books' => $books]);
 
     }

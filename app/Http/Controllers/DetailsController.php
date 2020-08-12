@@ -97,7 +97,7 @@ class DetailsController extends Controller
 
     public function userIndex(Request $request)
     {
-        $books=\App\Book::simplePaginate(4);
+        $books=\App\Book::simplePaginate(3);
         $catagory = \App\Category::all();
         $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
         //dd($fav);

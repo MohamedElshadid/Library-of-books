@@ -7,7 +7,7 @@
     <div class="d-flex py-5 " style="position:relative;z-index:8">
     <div class="container">
         
-        <div class="row">   
+        <div class="row justify-content-md-center">   
 @forelse ($favourites as $fav)
             <div class="col-md-4 col-lg-3 mt-2">
             <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
@@ -25,6 +25,13 @@
                                 <div class="card-body">
 
                                 <a href="{{route('books.view', $fav->book_id)}}" class="btn btn-dark">View</a>
+                                @if(in_array($fav->book_id,$favs))
+                                    <i class="fa fa-heart btn like" style="color:red ;width:20px;font-size:30px;float:right" data-target="{{$fav->book_id}}"></i>
+                                    <div style="clear: both;"></div>
+                                @else
+                                    <i class="fa fa-heart-o btn like" style="color:red ;width:20px;font-size:30px;float:right" data-target="{{$fav->book_id}}"></i>
+                                    <div style="clear: both;"></div>
+                                @endif
                                 <!-- @if($fav->available_copies !=0)
                                     <form action="lease" method="post" style="display:inline">
                                         @csrf
@@ -42,17 +49,6 @@
                                 @endif -->
                              
                                 </div><!-- class card-body-->
-                                <div class="card-footer">
-                                <div >
-                                @if(in_array($fav->book_id,$favs))
-                                    <i class="fa fa-heart btn like" style="color:red ;width:20px;font-size:30px;" data-target="{{$fav->book_id}}"></i>
-                                
-                                @else
-                                    <i class="fa fa-heart-o btn like" style="color:red ;width:20px;font-size:30px;" data-target="{{$fav->book_id}}"></i>
-                                
-                                @endif
-                            </div>
-                            </div>
                           
                             </div>                     
            

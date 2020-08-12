@@ -21,7 +21,7 @@ class FavouriteController extends Controller
         $favourites = DB::table('books')
         ->join('favourites','favourites.book_id','=', 'books.id' )
         ->where('favourites.user_id','=',Auth::id())
-        ->simplePaginate(4);
+        ->simplePaginate(3);
         $fav= \App\User::find(Auth::id())->favorites()->pluck('book_id')->all();
 
         

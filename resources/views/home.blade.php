@@ -12,7 +12,7 @@
             @endif
 
             @if($books->count()>0)
-            <div class="row" style="margin:0px">
+            <div class="row justify-content-md-center" style="margin:0px">
                 @foreach ($books as $book)
                     <div class="col-md-4 col-lg-3 mt-2">
                         <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
