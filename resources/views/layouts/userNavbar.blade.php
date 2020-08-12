@@ -29,10 +29,10 @@
                 width: 50% !important;
             }
             .latest_text{
-                font-size: 17px;
+                font-size: 17px !important;
             }
             .latest_sort{
-                padding: 5px !important;
+                padding: 4px !important;
                 font-size: 16px;
             }
         }

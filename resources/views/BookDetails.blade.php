@@ -106,16 +106,17 @@
                 @forelse ($comments as $comment)
                     @if($comment->book_id == $books->id)
                         <div class="card border-info mb-2 mt-2">
-                            <div class="card-header h4 bg-warning">
+                            <div class="card-header">
                                 <span>{{ $comment->user->username }}</span>
-                                <span class="float-right">{{ $comment->created_at->format('d M , H:i:s') }}</span>
+                                <span class="float-right text-primary">{{ $comment->created_at->format('d M , H:i:s') }}</span>
                             </div>
-                            <div class="card-body h5">
-                                <p class="card-text">{{ $comment->body }}</p>
+                            <div class="card-body">
+                                <span class="card-text">{{ $comment->body }}</span>
                                 @if($comment->user_id == Auth::id())
-                                <a href="{{ route('comment.destroy',$comment->id) }}" class="btn btn-sm btn-outline-danger py-0" style="font-size: 23px;" id="deleteComment" data-id="{{ $comment->id }}">
+                                <a href="{{ route('comment.destroy',$comment->id) }}" class="btn btn-sm btn-outline-danger py-0" style="font-size: 18px; float:right" id="deleteComment" data-id="{{ $comment->id }}">
                                     Delete
                                 </a>
+                                <div style="clear: both;"></div>
                                 @endif
                             </div>
                         </div>

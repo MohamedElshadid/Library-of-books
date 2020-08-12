@@ -42,13 +42,13 @@
                     @forelse ($comments as $comment)
                         @if($comment->book_id == $books->id)
                         <div class="card border-info mb-2 mt-2">
-                            <div class="card-header h4 bg-info">
+                            <div class="card-header">
                                 <span><img src="<?php echo asset('upload/'.$comment->user->image)?>" style="width:50px;height:50px;border-radius:50% ;" /></span>
                                 <span>{{ $comment->user->username }}</span>
                                 <span class="float-right">{{ $comment->created_at->format('d M , H:i:s') }}</span>
                             </div>
                             <div class="card-body h5">
-                                <p class="card-text">{{ $comment->body }}</p>
+                                <span class="card-text">{{ $comment->body }}</span>
                             </div>
                         </div>
                         

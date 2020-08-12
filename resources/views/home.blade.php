@@ -27,7 +27,7 @@
                             <div class="card-body">
                                 <div class="row">
                                 <a href="{{route('showBook', $book->id)}}" class="btn btn-info">View</a>
-                                <a href="{{ route('homeDestroy',$book->id) }}" class="btn btn-sm btn-outline-danger py-0 ml-1" style="font-size: 23px;" id="deleteBook" data-id="{{ $book->id }}">
+                                <a href="{{ route('homeDestroy',$book->id) }}" class="btn btn-sm btn-outline-danger py-0 ml-1" style="font-size: 20px;" id="deleteBook" data-id="{{ $book->id }}">
                                     Delete
                                 </a>
 

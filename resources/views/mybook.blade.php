@@ -26,7 +26,7 @@
                                 
                             <div class="card-body">
                                 <div class="row">
-                                <a href="{{route('showBook', $book->id)}}" class="btn btn-info mr-1">View</a>
+                                <a href="{{route('books.view', $book)}}" class="btn btn-dark mr-1">View</a>
                                 <form  method="post">
                                     @csrf
 

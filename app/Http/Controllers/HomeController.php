@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function showBook($id){
         $book = Book::find($id);
         $category_id=Book::where('id','=',$id)->get("category_id")->first();
-        $comments = Comment::latest()->get();
+        $comments = Comment::all();
         return view('BookPage',['books'=>$book ,'comments'=>$comments]);
     }
 
