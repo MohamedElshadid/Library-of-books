@@ -157,8 +157,8 @@ p {
 }
 /* End Team */
 .users{
-  background: linear-gradient(rgb(105 98 95 / 80%), rgb(33 31 31 / 80%)), rgb(86 84 83 / 80%)
-   url('../upload/blur-bookcase-books-bookshelf-298660.jpg') no-repeat;
+  background: linear-gradient(rgb(60 57 57 / 80%), rgb(33 31 31 / 80%)), rgb(62 59 57 / 80%)
+  url(../upload/blur-bookcase-books-bookshelf-298660.jpg) no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -45,7 +45,7 @@
             <div class="col-md-4 col-lg-3 mt-2">
                         <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
                             <div class="card-header">                       
-                                <div>  <img class="mb-2" src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
+                                <div>  <img class="mb-3" src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
                                 <h5> {{$book->title}}</h5>
                                 <h5>Author: {{$book->author}}</h5>
                                 <h5>Category: {{$book->category->name}}</h5>
