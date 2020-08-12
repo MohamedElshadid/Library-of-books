@@ -32,7 +32,7 @@
                 font-size: 17px;
             }
             .latest_sort{
-                padding: 0 !important;
+                padding: 5px !important;
                 font-size: 16px;
             }
         }

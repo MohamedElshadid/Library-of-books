@@ -13,7 +13,7 @@
             <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
                             <div class="card-header">      
                             <div> 
-                            <img src="<?php echo asset('storage/'.$fav->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
+                            <img class="mb-2" src="<?php echo asset('storage/'.$fav->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
                                 <h5> {{$fav->title}}</h5> 
                             <h5> Author : {{$fav->author}}</h5> 
                             <h5>Price : {{$fav->price}} </h5>
