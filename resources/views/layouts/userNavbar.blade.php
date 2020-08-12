@@ -28,6 +28,13 @@
             .cat_list{
                 width: 50% !important;
             }
+            .latest_text{
+                font-size: 17px;
+            }
+            .latest_sort{
+                padding: 0 !important;
+                font-size: 16px;
+            }
         }
         @media (max-width:991px)
         {

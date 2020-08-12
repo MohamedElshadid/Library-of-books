@@ -18,9 +18,9 @@
         </div>
     @endif
     
-    <a class="text-light" style="font-size:20px"> Order By : </a>
+    <a class="text-light latest_text" style="font-size:20px"> Order By : </a>
     {{-- <label >order by : </label> --}}
-    <a class="btn btn-success btn-lg" href="{{route('sort.latest')}}">Latest</a>
+    <a class="btn btn-success btn-lg latest_sort" href="{{route('sort.latest')}}">Latest</a>
     <form class="form-inline search_form" action="{{route('search')}}" method="GET" style="display:inline-block;position: absolute;left:75%;">
         <input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
         <input class="btn btn-outline-success my-2 my-sm-0 mt-1" type="submit" value="search">
