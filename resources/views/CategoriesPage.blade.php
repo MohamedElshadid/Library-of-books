@@ -2,7 +2,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="overlay"></div>
 <div class="users">
     <div class="row justify-content-center" style="width:50%;margin: 0 auto;">
         <div class="col-md-8" style="z-index:718;">

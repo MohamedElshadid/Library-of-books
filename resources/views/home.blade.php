@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="overlay"></div>
 <div class="users">
     <div class="justify-content-center" style="width:100%;">
         <div style="z-index:718;position:relative">
@@ -15,7 +14,7 @@
             @if($books->count()>0)
             <div class="row" style="margin:0px">
                 @foreach ($books as $book)
-                    <div class="col-md-3 mt-2">
+                    <div class="col-md-4 col-lg-3 mt-2">
                         <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
                             <div class="card-header">                       
                             <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />

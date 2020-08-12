@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="overlay" style="height:1250px"></div>
-<div class="users" style="height:1250px">
+<div class="users">
     <div class="container" style="z-index:6;position:relative">
         {{--------- Flash Sessions -------}}
         @if(Session::has('addSuccess'))

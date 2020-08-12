@@ -63,7 +63,8 @@ class UserHomeController extends Controller
     function mybooks()
     {        
         //dd(Auth::user()->leases);
-        return view('mybook', ['books' => Auth::user()->leases]);
+        $books = Auth::user()->leases()->simplePaginate(4);
+        return view('mybook', ['books' => $books]);
 
     }
 }

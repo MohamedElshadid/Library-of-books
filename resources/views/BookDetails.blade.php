@@ -1,8 +1,7 @@
 @extends('layouts.userNavbar')
 @section('content')
 
-<div class="overlay" style="height:1250px"></div>
-<div class="users" style="height:1250px">
+<div class="users">
     <div class="container" style="z-index:6;position:relative">
         {{--------- Flash Sessions -------}}
         @if(Session::has('addSuccess'))
@@ -25,8 +24,8 @@
                     <i class="fa fa-heart-o btn like" style="color:red;width:50px;z-index:55 ;font-size:30px;position: absolute;left: 87%;" data-target="{{$books->id}}"></i>
                 
                 @endif         
-                <div class="col-md-4">
-                    <img src="<?php echo asset('storage/'.$books->cover)?>" style="width:280px;height:220px;border:2px solid black ;" >
+                <div class="col-md-4 mb-3">
+                    <img src="<?php echo asset('storage/'.$books->cover)?>" style="width:100%;height:220px;border:2px solid black ;" >
                 </div>
                 <div class="col-md-8">
                     <h5 style="color:black;font-weight: bold;"> Title: <strong class="text-primary" style="font-size:25px">{{$books->title}}</strong>

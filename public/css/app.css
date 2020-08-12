@@ -157,24 +157,25 @@ p {
 }
 /* End Team */
 .users{
-  background: url('../upload/blur-bookcase-books-bookshelf-298660.jpg') no-repeat;
+  background: linear-gradient(rgb(105 98 95 / 80%), rgb(33 31 31 / 80%)), rgb(86 84 83 / 80%)
+   url('../upload/blur-bookcase-books-bookshelf-298660.jpg') no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 839px;
+  min-height: 839px;
   background-position: center;
   position: relative;
   width: 100%;
   padding: 12px;
 }
-.overlay{
+/* .overlay{
   background-color: rgba(0, 0, 0, 0.5);
-  height: 839px;
+  min-height: 839px;
   width: 100%;
   z-index: 4;
   position:absolute;
-}
+} */
 .navbar-brand{
   color: white !important;
 }

@@ -322,7 +322,7 @@ input {
   display: block;
   border: none;
   border-bottom: 1px solid #999;
-  padding: 6px 30px;
+  padding: 6px 19px !important;
   font-family: Poppins;
   box-sizing: border-box; }
   input::-webkit-input-placeholder {
@@ -448,7 +448,12 @@ label.valid {
   -ms-transform: translateY(0); }
 
 .material-icons-name {
-  font-size: 18px; }
+  font-size: 18px;
+  
+ }
+ i{
+  margin-left: 5px;
+ }
 
 .signin-content {
   padding-top: 67px;
@@ -590,3 +595,9 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+@media(max-width:767px)
+{
+  a,.nav-item{
+    padding-left: 10px;
+  }
+}

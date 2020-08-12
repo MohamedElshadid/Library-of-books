@@ -22,7 +22,20 @@
     <link href="{{ asset('css/swiper.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/userRating.css') }}" rel="stylesheet">
-
+    <style>
+        @media(max-width:767px)
+        {
+            .cat_list{
+                width: 50% !important;
+            }
+        }
+        @media (max-width:991px)
+        {
+            .search_form{
+                left:60% !important;
+            }
+        }
+    </style>
     <!-- Font Icon -->
 </head>
 <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
@@ -72,9 +85,9 @@
                                         {{ __('Edit Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

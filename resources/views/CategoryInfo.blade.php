@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="overlay"></div>
     <div class="users">
     @if(count($books)>0)
     <table class="table table-bordered table-info" style="font-weight:bold;background-color:rgba(255, 255, 255, 0.7) !important;position:relative;z-index:6">

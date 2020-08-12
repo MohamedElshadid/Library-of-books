@@ -3,7 +3,6 @@
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="overlay"></div>
 <div class="users">
 <nav style="position:relative;z-index:8">
     {{--------- Flash Session -------}}
@@ -22,16 +21,14 @@
     <a class="text-light" style="font-size:20px"> Order By : </a>
     {{-- <label >order by : </label> --}}
     <a class="btn btn-success btn-lg" href="{{route('sort.latest')}}">Latest</a>
-    <a class="btn btn-success btn-lg" href="{{route('sort.rate')}}">Rate</a>
-
-    <form class="form-inline" action="{{route('search')}}" method="GET" style="display:inline-block;width:20%;position: absolute;left: 77%;">
+    <form class="form-inline search_form" action="{{route('search')}}" method="GET" style="display:inline-block;position: absolute;left:75%;">
         <input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
-        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="search">
+        <input class="btn btn-outline-success my-2 my-sm-0 mt-1" type="submit" value="search">
     </form>
     
 </nav>
 <div class="d-flex py-5 " style="position:relative;z-index:8">
-    <div class="list-group" style="width:18%">
+    <div class="list-group cat_list" style="width:18%">
         @isset($catagory)
         <a class="list-group-item list-group-item-action" style="font-size:20px" href="{{route("all")}}">All Categories</a>
         @foreach ($catagory as $item)
@@ -45,7 +42,7 @@
         <div class="row">
 
             @forelse ($books as $book)
-            <div class="col-md-3 mt-2">
+            <div class="col-md-4 col-lg-3 mt-2">
                         <div class="card" style="background-color:rgba(255, 255, 255, 0.7)  !important ">
                             <div class="card-header">                       
                                 <div>  <img src="<?php echo asset('storage/'.$book->cover)?>" style="width:100%;height:130px;border:2px solid black ;" />
